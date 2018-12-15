@@ -35,8 +35,9 @@ if (isset($_POST['newPassword'], $_POST['oldPassword']))
 
         $statement->execute();
 
+        $_SESSION['message'] = "Password successfully changed!";
     }
 
-    redirect('/index.php');
+    redirect('/update.php');
     }
 };

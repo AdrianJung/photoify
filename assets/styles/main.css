@@ -1,1 +1,154 @@
-/* In this file you can add your custom styles. */
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: #fdfbf9;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0px 9999px #fdfbf9;
+}
+.logo {
+  font-family: "Righteous", cursive;
+  font-size: 60px;
+  color: #b118c8;
+  text-align: center;
+}
+.login-container {
+  position: relative;
+  top: 85px;
+  display: flex;
+  flex-direction: column;
+}
+.sign {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #b118c8;
+  margin-top: 20px;
+  font-weight: 500;
+}
+.sign-in {
+  margin: 0 15px 0 0;
+}
+.sign-up {
+  color: rgba(177, 24, 200, 0.4);
+}
+.sign-in::after {
+  content: "";
+  position: absolute;
+  left: 23.4%;
+  bottom: 82.5%;
+  width: 87px;
+  height: 3px;
+  background: #b118c8;
+}
+.sign-up::after {
+  content: "";
+  position: absolute;
+  left: 51.5%;
+  bottom: 82.5%;
+  width: 87px;
+  height: 3px;
+  background: rgba(177, 24, 200, 0.4);
+}
+
+.up-after::after {
+  background: #b118c8;
+}
+.in-after::after {
+  background: rgba(177, 24, 200, 0.4);
+}
+.in-after-style {
+  background: #b118c8;
+}
+.svg {
+  position: relative;
+  color: #b118c8;
+  font-size: 19px;
+  margin-left: 30px;
+}
+
+.registerform {
+  display: none;
+}
+.block {
+  display: block;
+  animation-name: register;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.none {
+  display: none;
+  animation-name: register;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+hr {
+  position: relative;
+  bottom: 17px;
+  left: 11%;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  height: 1.7px;
+  /* border: 1.5px solid #b118c8; */
+  background-color: #b118c8;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+.input {
+  position: relative;
+  background: #fdfbf9;
+  width: 190px;
+  height: 30px;
+  border: 0;
+  margin-bottom: 20px;
+}
+.input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: 10px;
+}
+.faded {
+  color: rgba(177, 24, 200, 0.4);
+}
+.not-faded {
+  color: #b118c8;
+}
+
+.button {
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  border: 2px solid #b118c8;
+  left: 29%;
+  margin-top: 10px;
+  height: 30px;
+  width: 110px;
+  background-color: #b118c8;
+  border-radius: 5%;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fade {
+  animation-name: register;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes register {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

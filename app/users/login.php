@@ -32,5 +32,7 @@ if (isset($_POST['username'], $_POST['password'])) {
         redirect('/');
     }
 
+        $_SESSION['error'] = "wrong password!";
+
 redirect('/../login.php');
 }

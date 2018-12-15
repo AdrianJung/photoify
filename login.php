@@ -10,5 +10,8 @@
           <br>
       <button type="submit" class="">Login</button>
     </form>
+    <?php if (isset($_SESSION['error'])): ?>
+        <?php echo $_SESSION['error']; ?>
+        <?php endif; ?>
 </article>
 <?php require __DIR__.'/views/footer.php'; ?>

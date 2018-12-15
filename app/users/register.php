@@ -34,8 +34,6 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
         $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
 
         $statement->execute();
-
-
-        redirect('/login.php');
+        redirect('/index.php');
     }
 };
