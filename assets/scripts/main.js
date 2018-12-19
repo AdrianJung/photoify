@@ -1,5 +1,4 @@
 "use strict";
-
 const signup = document.querySelector(".sign-up");
 const signin = document.querySelector(".sign-in");
 const signinafter = document.querySelector(".sign-in:after");

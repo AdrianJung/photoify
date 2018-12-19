@@ -1,6 +1,6 @@
 :root {
-  --purple: rgba(245, 185, 65, 1);
-  --faded-purple: rgba(245, 185, 65, 0.5);
+  --purple: rgba(225, 0, 0, 1);
+  --faded-purple: rgba(225, 0, 0, 0.5);
 }
 
 body {
@@ -16,6 +16,10 @@ input:-webkit-autofill {
   font-size: 60px;
   color: var(--purple);
   text-align: center;
+}
+.header-logo {
+  margin-top: 5px;
+  font-size: 40px;
 }
 .login-container {
   position: relative;
@@ -148,6 +152,25 @@ input:focus {
   animation-fill-mode: forwards;
 }
 
+.wheel {
+  float: right;
+  margin: 10px;
+}
+.cog {
+  font-size: 40px;
+}
+
+.profile-image {
+  height: 80px;
+  width: 80px;
+  background-image: url("/images/photo1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.profile-image-name {
+  display: flex;
+}
 @keyframes register {
   from {
     opacity: 0;
