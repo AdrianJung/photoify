@@ -1,0 +1,21 @@
+.footer-container {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  position: fixed;
+  bottom: 0;
+}
+.footer {
+  display: flex;
+  flex: 1;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+.footer-item {
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+}

@@ -1,3 +1,8 @@
+:root {
+  --purple: rgba(245, 185, 65, 1);
+  --faded-purple: rgba(245, 185, 65, 0.5);
+}
+
 body {
   height: 100vh;
   margin: 0;
@@ -9,7 +14,7 @@ input:-webkit-autofill {
 .logo {
   font-family: "Righteous", cursive;
   font-size: 60px;
-  color: #b118c8;
+  color: var(--purple);
   text-align: center;
 }
 .login-container {
@@ -23,7 +28,7 @@ input:-webkit-autofill {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: #b118c8;
+  color: var(--purple);
   margin-top: 20px;
   font-weight: 500;
 }
@@ -31,7 +36,7 @@ input:-webkit-autofill {
   margin: 0 15px 0 0;
 }
 .sign-up {
-  color: rgba(177, 24, 200, 0.4);
+  color: var(--faded-purple);
 }
 .sign-in::after {
   content: "";
@@ -40,7 +45,7 @@ input:-webkit-autofill {
   bottom: 82.5%;
   width: 87px;
   height: 3px;
-  background: #b118c8;
+  background: var(--purple);
 }
 .sign-up::after {
   content: "";
@@ -49,21 +54,21 @@ input:-webkit-autofill {
   bottom: 82.5%;
   width: 87px;
   height: 3px;
-  background: rgba(177, 24, 200, 0.4);
+  background: var(--faded-purple);
 }
 
 .up-after::after {
-  background: #b118c8;
+  background: var(--purple);
 }
 .in-after::after {
-  background: rgba(177, 24, 200, 0.4);
+  background: var(--faded-purple);
 }
 .in-after-style {
-  background: #b118c8;
+  background: var(--purple);
 }
 .svg {
   position: relative;
-  color: #b118c8;
+  color: var(--purple);
   font-size: 19px;
   margin-left: 30px;
 }
@@ -91,8 +96,7 @@ hr {
   padding: 0;
   width: 200px;
   height: 1.7px;
-  /* border: 1.5px solid #b118c8; */
-  background-color: #b118c8;
+  background-color: var(--purple);
 }
 
 textarea:focus,
@@ -115,21 +119,21 @@ input:focus {
   margin-top: 10px;
 }
 .faded {
-  color: rgba(177, 24, 200, 0.4);
+  color: var(--faded-purple);
 }
 .not-faded {
-  color: #b118c8;
+  color: var(--purple);
 }
 
 .button {
   font-family: "Roboto", sans-serif;
   position: relative;
-  border: 2px solid #b118c8;
+  border: 2px solid var(--purple);
   left: 29%;
   margin-top: 10px;
   height: 30px;
   width: 110px;
-  background-color: #b118c8;
+  background-color: var(--purple);
   border-radius: 5%;
   color: white;
   font-size: 18px;
