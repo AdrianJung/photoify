@@ -1,0 +1,71 @@
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  overflow: auto;
+  font-size: 2.5vw;
+  z-index: 2;
+}
+.modal p {
+  font-weight: 300;
+  line-height: 32px;
+  font-size: 16px;
+  color: black;
+  padding: 0 50px 0 50px;
+}
+.modal-content {
+  border: 0.5px solid var(--purple);
+  padding-top: 12%;
+  position: relative;
+  right: 0;
+  float: right;
+  width: 0vw;
+  height: 90vh;
+  animation-name: modalfade;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+.modal.active {
+  display: block;
+  animation-name: fadein;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.text-item {
+  position: relative;
+  text-align: center;
+  font-size: 24px;
+  color: red;
+  animation-name: textfade;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+}
+
+.text-item:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+@keyframes textfade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalfade {
+  from {
+    width: 0vw;
+  }
+  to {
+    width: 50vw;
+  }
+}
+
+}

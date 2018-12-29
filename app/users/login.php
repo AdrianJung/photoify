@@ -27,7 +27,10 @@ if (isset($_POST['username'], $_POST['password'])) {
         $_SESSION['user'] = [
             'id' => $users['id'],
             'name' => $users['first_name'],
-            'username' => $users['username']
+            'lastName' => $users['last_name'],
+            'username' => $users['username'],
+            'avatar' => $users['avatar'],
+            'email' => $users['email']
         ];
         redirect('/');
     }

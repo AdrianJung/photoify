@@ -2,15 +2,13 @@
   height: 10vh;
   width: 100vw;
   display: flex;
-  flex-direction: row;
-  align-self: flex-start;
   position: fixed;
   bottom: 0;
 }
 .footer {
   display: flex;
   flex: 1;
-  background-color: white;
+  background-color: whitesmoke;
   align-items: center;
   justify-content: center;
 }
