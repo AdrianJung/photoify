@@ -1,21 +1,19 @@
 "use strict";
-let url = "https://randomuser.me/api/?results=10";
-const filterData = json => {
-  return json.results.map(user => {
-    return {
-      firstname: user.name.first,
-      lastname: user.name.last,
-      username: user.login.username,
-      email: user.email,
-      avatar: user.picture.thumbnail
-    };
-  });
-};
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    const filtered = filterData(data);
-    // filtered.forEach() => {
-    //
-    // });
-  });
+const posts = JSON.parse(getCookie("posts"));
+console.log(posts);
+const postbox = document.querySelector(".post-box");
+posts.forEach(post => {
+  postbox.innerHTML += `
+  <div class="post-header">
+      <img src="${post.image}" class="post-user-image" alt="">
+      <h6>Username</h6>
+  </div>
+  <img class="post-image" src="${post.image}" alt="">
+  <div class="post-description">
+      <h5>Title</h5>
+          <h6>Likes:</h6>
+      <p> ${post.description}
+      </p>
+  </div>
+  `;
+});

@@ -1,9 +1,8 @@
-* {
-  border: 1px solid black;
-}
 .post-box {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
+  position: relative;
+  margin-bottom: 10vh;
 }
 .post-header {
   display: flex;

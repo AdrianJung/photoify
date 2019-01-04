@@ -16,3 +16,13 @@ if (!function_exists('redirect')) {
         exit;
     }
 }
+
+function getPosts($pdo) {
+    $statement = $pdo->prepare("SELECT * FROM posts, users WHERE users.id = posts.user_id ORDER BY timestamp DESC");
+    $statement->execute();
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $cookieData = json_encode($posts);
+    $cookieName = "posts";
+    setcookie($cookieName,$cookieData);
+    // return $posts;
+}
