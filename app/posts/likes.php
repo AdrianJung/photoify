@@ -15,5 +15,15 @@ require __DIR__.'/../../views/header.php';
 	 $statement->bindParam(':no_likes', $no_likes, PDO::PARAM_INT);
 	 $statement->execute();
 
+     $likes = $statement->fetch(PDO::FETCH_ASSOC);
+
+     $statement = $pdo->prepare('SELECT no_likes FROM posts WHERE post_id = :current_id');
+     $statement->bindParam(':current_id', $current_id, PDO::PARAM_INT);
+     $statement->execute();
+     $updated_likes = $statement->fetch(PDO::FETCH_ASSOC);
+     var_dump($updated_likes['no_likes']);
+
+
+
  }
 ?>
