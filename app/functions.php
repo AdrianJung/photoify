@@ -23,4 +23,7 @@ function getPosts($pdo) {
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     $posts = json_encode($posts);
     return $posts;
-}
+};
+function handlelikes() {
+
+    };

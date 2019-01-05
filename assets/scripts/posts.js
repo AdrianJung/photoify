@@ -1,10 +1,11 @@
 "use strict";
 
-const postbox = document.querySelector(".post-box");
+const postscontainer = document.querySelector(".posts-container");
 
 const createPost = json => {
   json.forEach(post => {
-    postbox.innerHTML += `
+    postscontainer.innerHTML += `
+    <div class="post-box">
     <div class="post-header">
     <img src="${post.avatar}" class="post-user-image" alt="">
     <h6>${post.username}</h6>
@@ -18,6 +19,8 @@ const createPost = json => {
     <p> ${post.description}
     </p>
     <button class="likeBtn" name="like" type="submit" value="" data-id="${post.post_id}">Like</button>
+    <button class="likeBtn" name="dislike" type="submit" value="" data-id="${post.post_id}">Dislike</button>
+    </div>
     </div>
     `
     ;
@@ -40,10 +43,6 @@ fetch("http://localhost:8888/app/posts/api.php")
 			const likes = [...document.querySelectorAll('.likes')]
 			const filterfunc = data => data.filter(item => item.dataset.id === event.target.dataset.id)
 			const dbfilter = data => data.filter(item => item.post_id === filterfunc(likes)[0].dataset.id)
-
-			console.log(filterfunc(likes)[0].innerHTML)
-			console.log(filterfunc(likes)[0].dataset.id)
-			console.log(dbfilter(data)[0].no_likes)
 filterfunc(likes)[0].innerHTML = "Likes: " + dbfilter(data)[0].no_likes
   })
 },50 );

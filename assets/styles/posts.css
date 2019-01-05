@@ -1,8 +1,11 @@
-.post-box {
+.posts-container {
   width: 100vw;
-  height: 100vh;
   position: relative;
   margin-bottom: 10vh;
+}
+.post-box {
+  margin-bottom: 5vh;
+  border: 1px solid black;
 }
 .post-header {
   display: flex;

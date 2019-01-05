@@ -3,7 +3,7 @@
 <?php if (!isset($_SESSION['user'])): ?>
     <?php redirect('/login.php');?>
 <?php endif ;?>
-<div class="post-box">
+<div class="posts-container">
     <?php getPosts($pdo);?>
 </div>
 
