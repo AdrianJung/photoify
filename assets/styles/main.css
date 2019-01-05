@@ -169,6 +169,9 @@ input:focus {
   margin: 20px 0px 0px 10px;
   display: flex;
 }
+.profile-image-container {
+
+}
 
 @keyframes register {
   from {

@@ -22,7 +22,11 @@
         <img class="profile-image"src="<?= $_SESSION['user']['avatar']?>" alt="">
     <h1> <?=$_SESSION['user']['username'];?></h1>
 </div>
+<div class="posts-container">
+    <?php getPosts($pdo);?>
+</div>
 <div class="profile-image-container">
 </div>
 <?php require __DIR__.'/views/footer.php'; ?>
 <script src="/assets/scripts/profile.js"></script>
+<script src="assets/scripts/posts.js" charset="utf-8"></script>

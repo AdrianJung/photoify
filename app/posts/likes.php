@@ -26,9 +26,6 @@ require __DIR__.'/../../views/header.php';
      $statement->execute();
      $updated_likes = $statement->fetch(PDO::FETCH_ASSOC);
      var_dump($updated_likes['no_likes']);
-
-
-
  }
 
 ?>

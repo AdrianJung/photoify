@@ -23,7 +23,12 @@ function getPosts($pdo) {
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     $posts = json_encode($posts);
     return $posts;
-};
-function handlelikes() {
+}
 
-    };
+function getComments($pdo) {
+    $statement = $pdo->prepare("SELECT * FROM comments");
+    $statement->execute();
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $posts = json_encode($posts);
+    return $posts;
+}
