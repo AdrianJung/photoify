@@ -29,4 +29,4 @@
 </div>
 <?php require __DIR__.'/views/footer.php'; ?>
 <script src="/assets/scripts/profile.js"></script>
-<script src="assets/scripts/posts.js" charset="utf-8"></script>
+<script src="assets/scripts/newposts.js" charset="utf-8"></script>

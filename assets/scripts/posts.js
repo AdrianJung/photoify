@@ -14,7 +14,7 @@ const createPost = json => {
     <div class="post-box">
     <div class="post-header">
     <img src="${post.avatar}" class="post-user-image" alt="">
-    <h6>${post.username}</h6>
+    <h2>${post.username}</h2>
     </div>
     <img class="post-image" src="${post.image}" alt="">
     <div class="post-description">
@@ -24,28 +24,26 @@ const createPost = json => {
     </p>
     <p> ${post.description}
     </p>
-    <button class="likeBtn" name="like" type="submit" value="" data-id="${post.post_id}">Like</button>
-    <button class="likeBtn" name="dislike" type="submit" value="" data-id="${post.post_id}">Dislike</button>
+    <button class="likeBtn like" name="like" type="submit" value="">
+    <i class="fas fa-thumbs-up" data-id="${post.post_id}"></i>
+    </button>
+    <button class="likeBtn dislike" name="dislike" type="submit" value="">
+    <i class="fas fa-thumbs-down" data-id="${post.post_id}"></i>
+    </button>
     </form>
     </div>
     </div>
-
     <div data-id="${post.post_id}" class="commentscontainer">
+    <div class="comment-section">
     </div>
     <form class="comments-form" target="hiddenFrame" action="../app/posts/comments.php" method="post">
     <input type="text" name="comment" placeholder="" required>
     <button type="submit" data-id="${post.post_id}" class="commentBtn">comment</button>
     </form>
+    </div>
     `
-
   })
 }
-
-fetch("http://localhost:8888/app/posts/comments_api.php")
-	.then((resp) => resp.json())
-	.then((data) => {
-	console.table(data)
-	})
 
 const initEventListeners = (elts, callBack) => {
   elts.forEach(el => {
@@ -55,13 +53,20 @@ const initEventListeners = (elts, callBack) => {
 const handleClickComment = (event) => {
   let postId = event.target.dataset.id
   document.cookie = "postId=" + postId
-  console.log(postId)
+}
+const createComment = (elts, data) => {
+  console.log(elts)
+  console.log(data)
 }
 
 const handleClick = (event) => {
   let postId = event.target.dataset.id
   document.cookie = "like=" + postId
 
+  fetch("http://localhost:8888/app/posts/comments_api.php")
+  .then((resp) => resp.json())
+  .then((data) => {
+  })
   setTimeout(() => {
     fetch("http://localhost:8888/app/posts/api.php")
     .then((resp) => resp.json())
@@ -73,11 +78,9 @@ const handleClick = (event) => {
     })
   }, 50)
 }
-
 fetch("http://localhost:8888/app/posts/api.php")
 .then((resp) => resp.json())
 .then((data) => {
-  console.table(data)
   if (window.location.pathname === '/profile.php') {
     let currentUser = getUser('userid')
     const userfilter = data => data.filter(user => user.user_id === currentUser)
@@ -87,7 +90,6 @@ fetch("http://localhost:8888/app/posts/api.php")
   const buttons = document.querySelectorAll('.likeBtn')
   const commentscontainer = [...document.querySelectorAll('.comments-container')]
   const commentbuttons = [...document.querySelectorAll('.commentBtn')]
-  console.log(commentbuttons)
   initEventListeners(buttons, handleClick)
   initEventListeners(commentbuttons, handleClickComment)
 })

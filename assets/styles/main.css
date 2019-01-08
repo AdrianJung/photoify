@@ -1,6 +1,6 @@
 :root {
-  --purple: rgba(251, 177, 60, 1);
-  --faded-purple: rgba(251, 177, 60, 0.5);
+  --orange: rgba(251, 177, 60, 1);
+  --faded-orange: rgba(251, 177, 60, 0.5);
 }
 
 body {
@@ -15,7 +15,7 @@ input:-webkit-autofill {
 .logo {
   font-family: "Righteous", cursive;
   font-size: 60px;
-  color: var(--purple);
+  color: var(--orange);
   text-align: center;
 }
 .header-logo {
@@ -33,7 +33,7 @@ input:-webkit-autofill {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: var(--purple);
+  color: var(--orange);
   margin-top: 20px;
   font-weight: 500;
 }
@@ -41,7 +41,7 @@ input:-webkit-autofill {
   margin: 0 15px 0 0;
 }
 .sign-up {
-  color: var(--faded-purple);
+  color: var(--faded-orange);
 }
 .sign-in::after {
   content: "";
@@ -50,7 +50,7 @@ input:-webkit-autofill {
   bottom: 82.5%;
   width: 87px;
   height: 3px;
-  background: var(--purple);
+  background: var(--orange);
 }
 .sign-up::after {
   content: "";
@@ -59,21 +59,21 @@ input:-webkit-autofill {
   bottom: 82.5%;
   width: 87px;
   height: 3px;
-  background: var(--faded-purple);
+  background: var(--faded-orange);
 }
 
 .up-after::after {
-  background: var(--purple);
+  background: var(--orange);
 }
 .in-after::after {
-  background: var(--faded-purple);
+  background: var(--faded-orange);
 }
 .in-after-style {
-  background: var(--purple);
+  background: var(--orange);
 }
 .svg {
   position: relative;
-  color: var(--purple);
+  color: var(--orange);
   font-size: 19px;
   margin-left: 30px;
 }
@@ -101,7 +101,7 @@ hr {
   padding: 0;
   width: 200px;
   height: 1.7px;
-  background-color: var(--purple);
+  background-color: var(--orange);
 }
 
 textarea:focus,
@@ -124,21 +124,21 @@ input:focus {
   margin-top: 10px;
 }
 .faded {
-  color: var(--faded-purple);
+  color: var(--faded-orange);
 }
 .not-faded {
-  color: var(--purple);
+  color: var(--orange);
 }
 
 .button {
   font-family: "Roboto", sans-serif;
   position: relative;
-  border: 2px solid var(--purple);
+  border: 2px solid var(--orange);
   left: 29%;
   margin-top: 10px;
   height: 30px;
   width: 110px;
-  background-color: var(--purple);
+  background-color: var(--orange);
   border-radius: 5%;
   color: whitesmoke;
   font-size: 18px;
