@@ -22,5 +22,11 @@ if (isset($_FILES['profilepic'])) {
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':avatar', $destination, PDO::PARAM_STR);
     $statement->execute();
+    
+    $statement = $pdo->prepare('SELECT avatar FROM users WHERE username = :username');
+    $statement->bindParam(':username', $username, PDO::PARAM_STR);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['user']['avatar'] = $user['avatar'];
 };
 redirect('/profile.php');

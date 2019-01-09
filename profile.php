@@ -1,5 +1,5 @@
 <?php require __DIR__.'/views/header.php'; ?>
-    <h1 class="logo header-logo">Photoify.</h1>
+    <h1 class="logo header-logo">Photoify</h1>
     <div class="icon">
         <div class="hamburger"></div>
     </div>
@@ -23,7 +23,6 @@
     <h1> <?=$_SESSION['user']['username'];?></h1>
 </div>
 <div class="posts-container">
-    <?php getPosts($pdo);?>
 </div>
 <div class="profile-image-container">
 </div>

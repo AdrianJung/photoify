@@ -22,12 +22,9 @@ function getPosts($pdo) {
     $statement->execute();
 	$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     
-    $statement = $pdo->prepare("SELECT posts.post_id, comments.id, comments.post_id, comments.user_id, comments.content FROM posts, comments WHERE comments.post_id = posts.post_id");
+    $statement = $pdo->prepare("SELECT posts.post_id, comments.id, comments.post_id, comments.user_id, comments.content, comments.author FROM posts, comments WHERE comments.post_id = posts.post_id");
     $statement->execute();
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
-    
-    
     
     foreach ($posts as &$post) {
         

@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php setcookie("userid", strval($_SESSION['user']['id']));?>
-    <h1 class="logo header-logo">Photoify.</h1>
+    <h1 class="logo header-logo">Photoify</h1>
 <?php if (!isset($_SESSION['user'])): ?>
     <?php redirect('/login.php');?>
 <?php endif ;?>

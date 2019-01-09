@@ -5,52 +5,50 @@ let url = 'http://localhost:8888/app/posts/full_api.php'
 const container = document.querySelector(".posts-container")
 
 const createPost = (json) => {
-    
-    
     const postsMarkup = json.map(post => {
-        
         const comments = post.comments.map(comment => {
-            return `<p>${comment.content}</p>`
+            return `
+           <p><b>${comment.author} : </b>${comment.content}</p>
+           `
         }).join('')
-        
         return `
         <div class="post-box">
         <div class="post-header">
-        <img src="${post.avatar}" class="post-user-image" alt="">
-        <h2>${post.username}</h2>
+          <img src="${post.avatar}" class="post-user-image" alt="">
+          <h2>${post.username}</h2>
         </div>
         <img class="post-image" src="${post.image}" alt="">
         <div class="post-description">
-        <h5>Title</h5>
-        <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
-        <form action="../app/posts/likes.php" target="hiddenFrame" method="post">
-        </p>
-        <p> ${post.description}
-        </p>
-        <button class="likeBtn like" name="like" type="submit" value="">
-        <i class="fas fa-thumbs-up" data-id="${post.post_id}"></i>
-        </button>
-        <button class="likeBtn dislike" name="dislike" type="submit" value="">
-        <i class="fas fa-thumbs-down" data-id="${post.post_id}"></i>
-        </button>
-        </form>
-        </div>
+          <h5>Title</h5>
+          <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
+            <form action="../app/posts/likes.php" target="hiddenFrame" method="post">
+          </p>
+          <p> ${post.description}
+          </p>
+          <button class="likeBtn like" "data-id="${post.post_id}" name="like" type="submit" value="">
+            <i class="fas fa-thumbs-up" data-id="${post.post_id}"></i>
+          </button>
+          <button class="likeBtn dislike" data-id="${post.post_id}" name="dislike" type="submit" value="">
+            <i class="fas fa-thumbs-down" data-id="${post.post_id}"></i>
+          </button>
+    
+          </form>
         </div>
         <div data-id="${post.post_id}" class="commentscontainer">
-        <div class="comment-section">
+        <div class="comments-section" data-id="${post.post_id}">
         ${comments}
+        </div>
         </div>
         <form class="comments-form" target="hiddenFrame" action="../app/posts/comments.php" method="post">
         <input type="text" name="comment" placeholder="" required>
         <button type="submit" data-id="${post.post_id}" class="commentBtn">comment</button>
         </form>
-        </div>
+      </div>      
         `
     }).join('')
     
     container.innerHTML = postsMarkup;
 }
-
 
 const getUser = (name) => {
     var value = "; " + document.cookie
@@ -71,13 +69,30 @@ const initEventListeners = (elts, callback) => {
 
 const handleClick = (event) => {
     let postId = event.target.dataset.id
-    document.cookie = "like=" + postId
-    
+    document.cookie = "like=" + postId   
 }
 
 const handleClickComment = (event) => {
-    let postId = event.target.dataset.id
-    document.cookie = "postId=" + postId
+	let postId = event.target.dataset.id
+	document.cookie = "postId=" + postId
+	setTimeout(() => {
+		getData(url)
+			.then(data => {
+                const commentsSection = [...document.querySelectorAll('.comments-section')]
+				const filterfunc = elts => elts.filter(el => el.dataset.id === postId)
+				const dbfilter = data => data.filter(comments => comments.post_id === postId)
+				dbfilter(data).forEach(comment => {
+                    filterfunc(commentsSection).forEach(commentSection => {
+						const postComments = comment.comments.map(postComment => {
+							return `
+                            <p><b>${postComment.author} : </b>${postComment.content}</p>
+							`
+						}).join('')
+						commentSection.innerHTML = postComments
+					})
+				})
+			})
+	}, 100)
 }
 
 const handleClickLikes = (event) => {
@@ -96,19 +111,18 @@ const handleClickLikes = (event) => {
 
 getData(url)
 .then(data => {
-        if (window.location.pathname === '/profile.php') {
+    console.log(data)
+        if (window.location.pathname === '/profile.php')
+        {
             let currentUser = getUser('userid')
             const userfilter = data => data.filter(user => user.user_id === currentUser)
             data = userfilter(data)
         }
         createPost(data)
-
         const buttons = document.querySelectorAll('.likeBtn')
         const commentscontainer = [...document.querySelectorAll('.comments-container')]
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]
         
         initEventListeners(buttons, handleClickLikes)
-        
         initEventListeners(commentbuttons, handleClickComment)
 })
-
