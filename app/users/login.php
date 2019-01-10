@@ -19,6 +19,12 @@ if (isset($_POST['username'], $_POST['password'])) {
 
     $users = $statement->fetch(PDO::FETCH_ASSOC);
 
+    if (!$users)
+    {   
+        $_SESSION['error'] = "User does not exist";
+        redirect('/../login.php');
+    }
+
     $dbPassword = $users['password'];
 
     // checks if given password is equal to password in db

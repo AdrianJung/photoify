@@ -8,30 +8,26 @@ const createPost = (json) => {
     const postsMarkup = json.map(post => {
         const comments = post.comments.map(comment => {
             return `
-           <p><b>${comment.author} : </b>${comment.content}</p>
+           <p><b class="comment-username">${comment.author} : </b> ${comment.content}</p>
            `
         }).join('')
         return `
         <div class="post-box">
         <div class="post-header">
           <img src="${post.avatar}" class="post-user-image" alt="">
-          <h2>${post.username}</h2>
+          <h3 class="comment-username">${post.username}</h3>
         </div>
         <img class="post-image" src="${post.image}" alt="">
+        <p> ${post.description}
         <div class="post-description">
-          <h5>Title</h5>
           <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
             <form action="../app/posts/likes.php" target="hiddenFrame" method="post">
           </p>
-          <p> ${post.description}
           </p>
-          <button class="likeBtn like" "data-id="${post.post_id}" name="like" type="submit" value="">
-            <i class="fas fa-thumbs-up" data-id="${post.post_id}"></i>
+          <button class="likeBtn like fas fa-thumbs-up" data-id="${post.post_id}" name="like" type="submit" value="">
           </button>
-          <button class="likeBtn dislike" data-id="${post.post_id}" name="dislike" type="submit" value="">
-            <i class="fas fa-thumbs-down" data-id="${post.post_id}"></i>
+          <button class="likeBtn dislike fas fa-thumbs-down" data-id="${post.post_id}" name="dislike" type="submit" value="">
           </button>
-    
           </form>
         </div>
         <div data-id="${post.post_id}" class="commentscontainer">
@@ -40,7 +36,7 @@ const createPost = (json) => {
         </div>
         </div>
         <form class="comments-form" target="hiddenFrame" action="../app/posts/comments.php" method="post">
-        <input type="text" name="comment" placeholder="" required>
+        <input class="comment-input" type="text" name="comment" placeholder="" required>
         <button type="submit" data-id="${post.post_id}" class="commentBtn">comment</button>
         </form>
       </div>      
@@ -79,16 +75,24 @@ const handleClickComment = (event) => {
 		getData(url)
 			.then(data => {
                 const commentsSection = [...document.querySelectorAll('.comments-section')]
+                const commentsInputs = [...document.querySelectorAll('.comment-input')]
+                
 				const filterfunc = elts => elts.filter(el => el.dataset.id === postId)
 				const dbfilter = data => data.filter(comments => comments.post_id === postId)
 				dbfilter(data).forEach(comment => {
                     filterfunc(commentsSection).forEach(commentSection => {
 						const postComments = comment.comments.map(postComment => {
 							return `
-                            <p><b>${postComment.author} : </b>${postComment.content}</p>
+                            <p><b class="comment-username">${postComment.author}</b> : ${postComment.content}</p>
 							`
 						}).join('')
-						commentSection.innerHTML = postComments
+                        commentSection.innerHTML = postComments
+                        commentsInputs.forEach(commentInput => {
+                        commentInput.value = '';
+
+                        })
+                       
+                        
 					})
 				})
 			})
@@ -111,18 +115,15 @@ const handleClickLikes = (event) => {
 
 getData(url)
 .then(data => {
-    console.log(data)
-        if (window.location.pathname === '/profile.php')
-        {
-            let currentUser = getUser('userid')
-            const userfilter = data => data.filter(user => user.user_id === currentUser)
-            data = userfilter(data)
-        }
+   
+        console.log(data)
+     
         createPost(data)
         const buttons = document.querySelectorAll('.likeBtn')
+
         const commentscontainer = [...document.querySelectorAll('.comments-container')]
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]
-        
+       
         initEventListeners(buttons, handleClickLikes)
         initEventListeners(commentbuttons, handleClickComment)
 })

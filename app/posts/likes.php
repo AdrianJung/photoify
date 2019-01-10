@@ -12,9 +12,11 @@ require __DIR__.'/../../views/header.php';
 	 $statement = $pdo->prepare('UPDATE posts SET no_likes = :no_likes WHERE post_id = :current_id');
 
      $no_likes = $likes['no_likes']+1;
+     
      if (isset($_POST['dislike'])) {
               $no_likes = $likes['no_likes']-1;
      }
+
      $statement->bindParam(':current_id', $current_id, PDO::PARAM_INT);
 	 $statement->bindParam(':no_likes', $no_likes, PDO::PARAM_INT);
 	 $statement->execute();

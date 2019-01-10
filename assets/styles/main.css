@@ -1,6 +1,6 @@
 :root {
-  --orange: rgba(233, 128, 252, 1);
-  --faded-orange: rgba(233, 128, 252, 0.5);
+  --orange: rgba(251, 177, 60, 1);
+  --faded-orange: rgba(251, 177, 60, 0.5);
 }
 
 body {
@@ -50,7 +50,7 @@ input:-webkit-autofill {
 .sign-up {
   color: var(--faded-orange);
 }
-.sign-in::after {
+/* .sign-in::after {
   content: "";
   position: absolute;
   left: 23.4%;
@@ -77,7 +77,7 @@ input:-webkit-autofill {
 }
 .in-after-style {
   background: var(--orange);
-}
+} */
 .svg {
   position: relative;
   color: var(--orange);
@@ -176,10 +176,27 @@ input:focus {
   margin: 20px 0px 0px 10px;
   display: flex;
 }
-.profile-image-container {
-
+.error-div {
+  height: 70px;
+  width: 250px;
+  border: 2px solid var(--orange);
+  border-radius: 2%;
+  box-shadow : 0 1px 2px var(--faded-orange), 0 1px 3px var(--faded-orange) ;
+  background-color: var(--faded-orange);
+  z-index: 3;
+  position: absolute;
+  right: 14vw;
+  top: 15vh;
+  padding-top: 15px;
+  text-align: center;
 }
-
+.error-text {
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 22px;
+  font-weight: 400;
+  
+}
 @keyframes register {
   from {
     opacity: 0;
