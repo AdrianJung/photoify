@@ -3,7 +3,6 @@
 let url = 'http://localhost:8888/app/posts/full_api.php'
 
 const container = document.querySelector(".posts-container")
-
 const createPost = (json) => {
     const postsMarkup = json.map(post => {
         const comments = post.comments.map(comment => {
@@ -21,12 +20,12 @@ const createPost = (json) => {
         <p> ${post.description}
         <div class="post-description">
           <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
-            <form action="../app/posts/likes.php" target="hiddenFrame" method="post">
+            <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
           </p>
           </p>
-          <button class="likeBtn like fas fa-thumbs-up" data-id="${post.post_id}" name="like" type="submit" value="">
+          <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
           </button>
-          <button class="likeBtn dislike fas fa-thumbs-down" data-id="${post.post_id}" name="dislike" type="submit" value="">
+          <button class="likeBtn dislike fas fa-thumbs-up hidden" id="#likeBtn" data-id="${post.post_id}" name="dislike" type="submit" value="">
           </button>
           </form>
         </div>
@@ -45,6 +44,9 @@ const createPost = (json) => {
     
     container.innerHTML = postsMarkup;
 }
+
+
+
 
 const getUser = (name) => {
     var value = "; " + document.cookie
@@ -76,7 +78,6 @@ const handleClickComment = (event) => {
 			.then(data => {
                 const commentsSection = [...document.querySelectorAll('.comments-section')]
                 const commentsInputs = [...document.querySelectorAll('.comment-input')]
-                
 				const filterfunc = elts => elts.filter(el => el.dataset.id === postId)
 				const dbfilter = data => data.filter(comments => comments.post_id === postId)
 				dbfilter(data).forEach(comment => {
@@ -101,14 +102,19 @@ const handleClickComment = (event) => {
 
 const handleClickLikes = (event) => {
 	let postId = event.target.dataset.id
-	document.cookie = "like=" + postId
+    document.cookie = "like=" + postId
 	setTimeout(() => {
 		getData(url)
 			.then(data => {
 				const likes = [...document.querySelectorAll('.likes')]
 				const filterfunc = data => data.filter(item => item.dataset.id === event.target.dataset.id)
 				const dbfilter = data => data.filter(item => item.post_id === filterfunc(likes)[0].dataset.id)
-				filterfunc(likes)[0].innerHTML = "Likes: " + dbfilter(data)[0].no_likes
+                filterfunc(likes)[0].innerHTML = "Likes: " + dbfilter(data)[0].no_likes
+                const likeButtons = [...document.querySelectorAll('.likeBtn')]
+                let currentbuttons = filterfunc(likeButtons)
+                currentbuttons.map(button => {
+                    button.classList.toggle('hidden')
+                })
 			})
 	}, 40)
 }
@@ -116,10 +122,9 @@ const handleClickLikes = (event) => {
 getData(url)
 .then(data => {
    
-        console.log(data)
-     
         createPost(data)
         const buttons = document.querySelectorAll('.likeBtn')
+    
 
         const commentscontainer = [...document.querySelectorAll('.comments-container')]
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]

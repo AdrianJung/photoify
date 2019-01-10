@@ -36,7 +36,6 @@ if (document.querySelector('.sign')){
       submitbutton.classList.remove("fade");
     }, 800);
   });
-
 }
 
 

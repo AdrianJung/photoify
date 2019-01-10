@@ -189,6 +189,10 @@ input:focus {
   top: 15vh;
   padding-top: 15px;
   text-align: center;
+  animation-name: register;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
 }
 .error-text {
   font-family: "Roboto", sans-serif;
@@ -197,6 +201,7 @@ input:focus {
   font-weight: 400;
   
 }
+
 @keyframes register {
   from {
     opacity: 0;

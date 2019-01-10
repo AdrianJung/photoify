@@ -32,9 +32,10 @@
   background-color: var(--orange);
   border: none;
   color: white;
-  padding: 12px 16px;
-  font-size: 20px;
+  padding: 8px 12px;
+  font-size: 15px;
   cursor: pointer;
+  
 }
 
 .profile-grid-image {
@@ -51,3 +52,8 @@
 .comment-username {
   color: var(--orange);
 }
+.hidden {
+  display:none!important;
+}
+
+
