@@ -8,11 +8,12 @@
 .footer {
   display: flex;
   flex: 1;
-  background-color: whitesmoke;
+  background-color: var(--orange);
   align-items: center;
   justify-content: center;
 }
 .footer-item {
+  color: var(--white);
   font-size: 40px;
   padding: 0;
   margin: 0;

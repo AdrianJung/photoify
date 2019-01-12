@@ -22,10 +22,11 @@ const createPost = (json) => {
         <button name="updatePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button edit-post" type="submit">Edit</button>
         </form>
         </div>
+        <div class="post-image-container">
         <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
+        </div>
         <p> <b>${post.description}</b></p>
         <div class="post-description">
-       
         <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
         <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
         </button>
@@ -192,6 +193,7 @@ getData(url)
         
     } else {
         createPost(data)
+        console.log(data)
         const buttons = [...document.querySelectorAll('.likeBtn')]
         const deleteButtons = [...document.querySelectorAll('.delete-post')]
         const editButtons = [...document.querySelectorAll('.edit-post')]
@@ -202,7 +204,6 @@ getData(url)
         hideButtons(data, buttons)
         displayButtonsHandler(deleteButtons)
         displayButtonsHandler(editButtons)
-        
     }
     deleteCookie("imagecookie")
 })

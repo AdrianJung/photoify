@@ -17,7 +17,6 @@ require __DIR__.'/../../views/header.php';
      if (isset($_POST['dislike'])) {
         $no_likes = $likes['no_likes']-1;
     }
-
      
      $statement->bindParam(':current_id', $current_id, PDO::PARAM_INT);
 	 $statement->bindParam(':no_likes', $no_likes, PDO::PARAM_INT);

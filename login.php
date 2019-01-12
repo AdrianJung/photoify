@@ -1,7 +1,7 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <div class="background">
         <div class="login-container">
-            <h1 class="logo">Photoify</h1>
+            <h1 class="logo loginlogo">Photoify</h1>
             <?php if (!isset($_SESSION['error'])): ?>
             <div class="sign">
                 <h3 class="sign-in">sign in</h3>

@@ -19,15 +19,14 @@ create a [Instagram](https://enmwikipediaorg/wiki/Instagram) clone which we call
 - [x] upload a profile avatar image
 - [x] create new posts with image and description
 - [ ] edit posts
-- [ ] delete posts
+- [x] delete posts
 - [x] like and dislike posts
 - [ ] follow and unfollow other users
 - [ ] view a list of posts by users I follow
-- [ ] able to comment on a post
+- [x] able to comment on a post
 - [ ] able to edit comments
 - [ ] able to delete comments
 - [ ] able to reply to comments
-- [ ] able to add [filters](https://picturepan2githubio/instagramcss/) to images
 - [ ] able to delete account along with all posts and comments
 - [ ] able to resetting password with email
 - [ ] able to view posts with a specific [hashtag](https://enmwikipediaorg/wiki/Hashtag) in the description
