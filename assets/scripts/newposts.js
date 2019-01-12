@@ -1,33 +1,37 @@
-'use strict';
-
 let url = 'http://localhost:8888/app/posts/full_api.php'
 
 const container = document.querySelector(".posts-container")
+const profilecontainer = document.querySelector('.profile-image-container')
+
+
 const createPost = (json) => {
     const postsMarkup = json.map(post => {
         const comments = post.comments.map(comment => {
             return `
-           <p><b class="comment-username">${comment.author} : </b> ${comment.content}</p>
-           `
+            <p><b class="comment-username">${comment.author} : </b> ${comment.content}</p>
+            `    
         }).join('')
         return `
         <div class="post-box">
         <div class="post-header">
-          <img src="${post.avatar}" class="post-user-image" alt="">
-          <h3 class="comment-username">${post.username}</h3>
+        <img src="${post.avatar}" style ="background-image: url()"class="post-user-image" alt="">
+        <h3 class="comment-username">${post.username}</h3>
+        <form class="deletePost-form" target="hiddenFrame" action="../app/posts/delete-posts.php" method="post">
+        <button name="deletePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="delete-post-button" type="submit">Delete Post</button>
+        </form>
         </div>
-        <img class="post-image" src="${post.image}" alt="">
-        <p> ${post.description}
+        <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
+        <p> <b>${post.description}</b></p>
         <div class="post-description">
-          <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
-            <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
-          </p>
-          </p>
-          <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
-          </button>
-          <button class="likeBtn dislike fas fa-thumbs-up hidden" id="#likeBtn" data-id="${post.post_id}" name="dislike" type="submit" value="">
-          </button>
-          </form>
+        <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
+        <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
+        </p>
+        </p>
+        <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
+        </button>
+        <button class="likeBtn dislike fas fa-thumbs-up hidden" id="#likeBtn" data-id="${post.post_id}" name="dislike" type="submit" value="">
+        </button>
+        </form>
         </div>
         <div data-id="${post.post_id}" class="commentscontainer">
         <div class="comments-section" data-id="${post.post_id}">
@@ -38,20 +42,27 @@ const createPost = (json) => {
         <input class="comment-input" type="text" name="comment" placeholder="" required>
         <button type="submit" data-id="${post.post_id}" class="commentBtn">comment</button>
         </form>
-      </div>      
+        </div>      
         `
     }).join('')
-    
     container.innerHTML = postsMarkup;
 }
 
-
-
+const createPostProfile = (json) => {
+    const profileposts = json.map(post => {
+        return `
+        <div class="profile-image-box">
+        <img src="${post.image}" data-id="${post.post_id} "class="profile-grid-image" alt="">
+        </div>
+        `
+    }).join('')
+    profilecontainer.innerHTML = profileposts
+}
 
 const getUser = (name) => {
     var value = "; " + document.cookie
-	var parts = value.split("; " + name + "=")
-	if (parts.length == 2) return parts.pop().split(";").shift()
+    var parts = value.split("; " + name + "=")
+    if (parts.length == 2) return parts.pop().split(";").shift()
 }
 
 const getData = url => {
@@ -62,73 +73,137 @@ const getData = url => {
 const initEventListeners = (elts, callback) => {
     elts.forEach(el => {
         el.addEventListener('click', callback)
-	})
+    })
 }
 
 const handleClick = (event) => {
     let postId = event.target.dataset.id
-    document.cookie = "like=" + postId   
+    document.cookie = "like=" + postId
 }
 
 const handleClickComment = (event) => {
-	let postId = event.target.dataset.id
-	document.cookie = "postId=" + postId
-	setTimeout(() => {
-		getData(url)
-			.then(data => {
-                const commentsSection = [...document.querySelectorAll('.comments-section')]
-                const commentsInputs = [...document.querySelectorAll('.comment-input')]
-				const filterfunc = elts => elts.filter(el => el.dataset.id === postId)
-				const dbfilter = data => data.filter(comments => comments.post_id === postId)
-				dbfilter(data).forEach(comment => {
-                    filterfunc(commentsSection).forEach(commentSection => {
-						const postComments = comment.comments.map(postComment => {
-							return `
-                            <p><b class="comment-username">${postComment.author}</b> : ${postComment.content}</p>
-							`
-						}).join('')
-                        commentSection.innerHTML = postComments
-                        commentsInputs.forEach(commentInput => {
+    let postId = event.target.dataset.id
+    document.cookie = "postId=" + postId
+    setTimeout(() => {
+        getData(url)
+        .then(data => {
+            const commentsSection = [...document.querySelectorAll('.comments-section')]
+            const commentsInputs = [...document.querySelectorAll('.comment-input')]
+            const filterfunc = elts => elts.filter(el => el.dataset.id === postId)
+            const dbfilter = data => data.filter(comments => comments.post_id === postId)
+            dbfilter(data).forEach(comment => {
+                filterfunc(commentsSection).forEach(commentSection => {
+                    const postComments = comment.comments.map(postComment => {
+                        return `
+                        <p><b class="comment-username">${postComment.author}</b> : ${postComment.content}</p>
+                        `
+                    }).join('')
+                    commentSection.innerHTML = postComments
+                    commentsInputs.forEach(commentInput => {
                         commentInput.value = '';
-
-                        })
-                       
                         
-					})
-				})
-			})
-	}, 100)
+                    })
+                })
+            })
+        })
+    }, 100)
+}
+
+const hideButtons = (json, elts) => json.map(post => {
+    const likeButtons = elts.filter(el => el.dataset.id === post.post_id)
+    if (post.has_liked) {
+        likeButtons.map(button => {
+            button.classList.toggle('hidden')
+        })
+    }
+})
+
+const handleClickDelete = (event) => {
+    let postId = event.target.dataset.postid
+    document.cookie = "delete=" + postId
+    window.location.reload()
+}
+
+const deleteButtonsHandler = (elts) => {
+    elts.map(el => {
+        if (getUser('userid') !== el.dataset.id) {
+            el.classList.add('hidden')
+        }
+    })
 }
 
 const handleClickLikes = (event) => {
-	let postId = event.target.dataset.id
+    let postId = event.target.dataset.id
     document.cookie = "like=" + postId
-	setTimeout(() => {
-		getData(url)
-			.then(data => {
-				const likes = [...document.querySelectorAll('.likes')]
-				const filterfunc = data => data.filter(item => item.dataset.id === event.target.dataset.id)
-				const dbfilter = data => data.filter(item => item.post_id === filterfunc(likes)[0].dataset.id)
-                filterfunc(likes)[0].innerHTML = "Likes: " + dbfilter(data)[0].no_likes
-                const likeButtons = [...document.querySelectorAll('.likeBtn')]
-                let currentbuttons = filterfunc(likeButtons)
-                currentbuttons.map(button => {
-                    button.classList.toggle('hidden')
-                })
-			})
-	}, 40)
+    setTimeout(() => {
+        getData(url)
+        .then(data => {
+            const likes = [...document.querySelectorAll('.likes')]
+            const filterfunc = data => data.filter(item => item.dataset.id === event.target.dataset.id)
+            const dbfilter = data => data.filter(item => item.post_id === filterfunc(likes)[0].dataset.id)
+            filterfunc(likes)[0].innerHTML = "Likes: " + dbfilter(data)[0].no_likes
+            const likeButtons = [...document.querySelectorAll('.likeBtn')]
+            let currentbuttons = filterfunc(likeButtons)
+            currentbuttons.map(button => {
+                button.classList.toggle('hidden')
+            })
+        })
+    }, 40)
 }
+const deleteCookie = (name) => {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+const createPostFunction = () => {
+    initEventListeners(buttons, handleClickLikes)
+    initEventListeners(commentbuttons, handleClickComment)
+    initEventListeners(deleteButtons, handleClickDelete)
+    hideButtons(data, buttons)
+    deleteButtonsHandler(deleteButtons)
+}
+
+let theawesomecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$/)
 
 getData(url)
 .then(data => {
-   
+    if (window.location.pathname === '/profile.php') {
+        if (!theawesomecookie) {
+            let currentUser = getUser('userid')
+            const userfilter = data => data.filter(user => user.user_id === currentUser)
+            data = userfilter(data)
+            createPostProfile(data)
+            const images = [...document.querySelectorAll('.profile-grid-image')]
+            images.forEach(image => {
+                image.addEventListener('click', (event) => {
+                    document.cookie = "imagecookie=" + event.target.dataset.id
+                    window.location.reload()
+                })
+            })
+        }
+        if (theawesomecookie) {
+            const cookieid = getUser("imagecookie")
+            const postsfilter = data => data.filter(post => post.post_id === cookieid)
+            data = postsfilter(data)
+            createPost(data)
+            const buttons = [...document.querySelectorAll('.likeBtn')]
+            const deleteButtons = [...document.querySelectorAll('.delete-post-button')]
+            const commentbuttons = [...document.querySelectorAll('.commentBtn')]
+            initEventListeners(buttons, handleClickLikes)
+            initEventListeners(commentbuttons, handleClickComment)
+            initEventListeners(deleteButtons, handleClickDelete)
+            hideButtons(data, buttons)
+            deleteButtonsHandler(deleteButtons)
+        } 
+        
+    } else {
         createPost(data)
-        const buttons = document.querySelectorAll('.likeBtn')
-    
-
-        const commentscontainer = [...document.querySelectorAll('.comments-container')]
+        const buttons = [...document.querySelectorAll('.likeBtn')]
+        const deleteButtons = [...document.querySelectorAll('.delete-post-button')]
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]
-       
         initEventListeners(buttons, handleClickLikes)
         initEventListeners(commentbuttons, handleClickComment)
+        initEventListeners(deleteButtons, handleClickDelete)
+        hideButtons(data, buttons)
+        deleteButtonsHandler(deleteButtons)
+        
+    }
 })
