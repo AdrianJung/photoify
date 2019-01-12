@@ -1,4 +1,5 @@
 <?php require __DIR__.'/views/header.php'; ?>
+
     <h1 class="logo header-logo">Photoify</h1>
     <div class="icon">
         <div class="hamburger"></div>
@@ -22,10 +23,8 @@
         <img class="profile-image"src="<?= $_SESSION['user']['avatar']?>" alt="">
     <h1> <?=$_SESSION['user']['username'];?></h1>
 </div>
-<div class="posts-container">
-</div>
-<div class="profile-image-container" id="#profilecontainer">
-</div>
+<div class="profile-image-container" id="#profilecontainer"></div>
+ <div class="posts-container"></div>
 <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 <?php require __DIR__.'/views/footer.php'; ?>
 <script src="/assets/scripts/profile.js"></script>

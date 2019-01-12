@@ -7,7 +7,6 @@ body {
   height: 100vh;
   max-width: 100vw;
   margin: 0;
-  background-color: whitesmoke;
 }
 p {
   margin: 0;
@@ -26,8 +25,10 @@ input:-webkit-autofill {
   text-align: center;
 }
 .header-logo {
-  margin-top: 5px;
+  padding: 5px 0 5px 0;
+  margin: 0;
   font-size: 40px;
+  background-color: white;
 }
 .login-container {
   position: relative;
@@ -169,8 +170,8 @@ input:focus {
 }
 
 .profile-image {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 .profile-image-name {
   margin: 20px 0px 0px 10px;

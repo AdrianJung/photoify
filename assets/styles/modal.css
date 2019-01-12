@@ -14,16 +14,16 @@
   line-height: 32px;
   font-size: 16px;
   color: black;
-  padding: 0 50px 0 50px;
+  margin: 10px 55px 10px 55px;
 }
 .modal-content {
-  border: 0.5px solid var(--purple);
-  padding-top: 12%;
+  border: 0.5px solid var(--orange);
+  padding: 12% 0 12% 0;
   position: relative;
   right: 0;
   float: right;
-  width: 0vw;
-  height: 90vh;
+  width: auto;
+  height: auto;
   animation-name: modalfade;
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
@@ -39,6 +39,7 @@
 .text-item {
   position: relative;
   text-align: center;
+  margin: 5px 0 5px 0;
   font-size: 24px;
   color: red;
   animation-name: textfade;

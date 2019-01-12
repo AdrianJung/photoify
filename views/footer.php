@@ -6,9 +6,6 @@
             <div data-id="index.php" class=" page-redirect footer footer-1">
                 <i data-id="index.php" class=" page-redirect fas fa-home svg footer-item"></i>
             </div>
-            <div data-id="search" class=" page-redirect footer footer-2">
-                <i data-id="search" class=" page-redirect fas fa-search svg footer-item"></i>
-            </div>
             <div data-id="new-post.php" class=" page-redirect footer footer-3">
                 <i  data-id="new-post.php" class=" page-redirect fas fa-plus-circle svg footer-item"></i>
             </div>

@@ -3,7 +3,6 @@ let url = 'http://localhost:8888/app/posts/full_api.php'
 const container = document.querySelector(".posts-container")
 const profilecontainer = document.querySelector('.profile-image-container')
 
-
 const createPost = (json) => {
     const postsMarkup = json.map(post => {
         const comments = post.comments.map(comment => {
@@ -16,21 +15,23 @@ const createPost = (json) => {
         <div class="post-header">
         <img src="${post.avatar}" style ="background-image: url()"class="post-user-image" alt="">
         <h3 class="comment-username">${post.username}</h3>
-        <form class="deletePost-form" target="hiddenFrame" action="../app/posts/delete-posts.php" method="post">
-        <button name="deletePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="delete-post-button" type="submit">Delete Post</button>
+        <form class="deletePost-form" target="hiddenFrame" action="../app/posts/update.php" method="post">
+        <button name="deletePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button delete-post" type="submit">Delete</button>
+        </form>
+        <form class="deletePost-form" target="hiddenFrame" action="../app/posts/update.php" method="post">
+        <button name="updatePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button edit-post" type="submit">Edit</button>
         </form>
         </div>
         <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
         <p> <b>${post.description}</b></p>
         <div class="post-description">
-        <p class="likes" data-id="${post.post_id}"> Likes: ${post.no_likes}
+       
         <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
-        </p>
-        </p>
         <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
         </button>
         <button class="likeBtn dislike fas fa-thumbs-up hidden" id="#likeBtn" data-id="${post.post_id}" name="dislike" type="submit" value="">
         </button>
+        <p class="likes" data-id="${post.post_id}"> ${post.no_likes}</p>
         </form>
         </div>
         <div data-id="${post.post_id}" class="commentscontainer">
@@ -59,7 +60,7 @@ const createPostProfile = (json) => {
     profilecontainer.innerHTML = profileposts
 }
 
-const getUser = (name) => {
+const getCookieVal = (name) => {
     var value = "; " + document.cookie
     var parts = value.split("; " + name + "=")
     if (parts.length == 2) return parts.pop().split(";").shift()
@@ -124,9 +125,9 @@ const handleClickDelete = (event) => {
     window.location.reload()
 }
 
-const deleteButtonsHandler = (elts) => {
+const displayButtonsHandler = (elts) => {
     elts.map(el => {
-        if (getUser('userid') !== el.dataset.id) {
+        if (getCookieVal('userid') !== el.dataset.id) {
             el.classList.add('hidden')
         }
     })
@@ -141,7 +142,7 @@ const handleClickLikes = (event) => {
             const likes = [...document.querySelectorAll('.likes')]
             const filterfunc = data => data.filter(item => item.dataset.id === event.target.dataset.id)
             const dbfilter = data => data.filter(item => item.post_id === filterfunc(likes)[0].dataset.id)
-            filterfunc(likes)[0].innerHTML = "Likes: " + dbfilter(data)[0].no_likes
+            filterfunc(likes)[0].innerHTML = dbfilter(data)[0].no_likes
             const likeButtons = [...document.querySelectorAll('.likeBtn')]
             let currentbuttons = filterfunc(likeButtons)
             currentbuttons.map(button => {
@@ -153,21 +154,14 @@ const handleClickLikes = (event) => {
 const deleteCookie = (name) => {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
-const createPostFunction = () => {
-    initEventListeners(buttons, handleClickLikes)
-    initEventListeners(commentbuttons, handleClickComment)
-    initEventListeners(deleteButtons, handleClickDelete)
-    hideButtons(data, buttons)
-    deleteButtonsHandler(deleteButtons)
-}
 
-let theawesomecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$/)
-
+let imagecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$/)
 getData(url)
 .then(data => {
     if (window.location.pathname === '/profile.php') {
-        if (!theawesomecookie) {
-            let currentUser = getUser('userid')
+        
+        if (!imagecookie) {
+            let currentUser = getCookieVal('userid')
             const userfilter = data => data.filter(user => user.user_id === currentUser)
             data = userfilter(data)
             createPostProfile(data)
@@ -179,31 +173,36 @@ getData(url)
                 })
             })
         }
-        if (theawesomecookie) {
-            const cookieid = getUser("imagecookie")
+        if (imagecookie) {
+            const cookieid = getCookieVal("imagecookie")
             const postsfilter = data => data.filter(post => post.post_id === cookieid)
             data = postsfilter(data)
             createPost(data)
             const buttons = [...document.querySelectorAll('.likeBtn')]
-            const deleteButtons = [...document.querySelectorAll('.delete-post-button')]
+            const deleteButtons = [...document.querySelectorAll('.delete-post')]
+            const editButtons = [...document.querySelectorAll('.edit-post')]
             const commentbuttons = [...document.querySelectorAll('.commentBtn')]
             initEventListeners(buttons, handleClickLikes)
             initEventListeners(commentbuttons, handleClickComment)
             initEventListeners(deleteButtons, handleClickDelete)
             hideButtons(data, buttons)
-            deleteButtonsHandler(deleteButtons)
+            displayButtonsHandler(deleteButtons)
+            displayButtonsHandler(editButtons)
         } 
         
     } else {
         createPost(data)
         const buttons = [...document.querySelectorAll('.likeBtn')]
-        const deleteButtons = [...document.querySelectorAll('.delete-post-button')]
+        const deleteButtons = [...document.querySelectorAll('.delete-post')]
+        const editButtons = [...document.querySelectorAll('.edit-post')]
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]
         initEventListeners(buttons, handleClickLikes)
         initEventListeners(commentbuttons, handleClickComment)
         initEventListeners(deleteButtons, handleClickDelete)
         hideButtons(data, buttons)
-        deleteButtonsHandler(deleteButtons)
+        displayButtonsHandler(deleteButtons)
+        displayButtonsHandler(editButtons)
         
     }
+    deleteCookie("imagecookie")
 })
