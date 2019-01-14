@@ -1,0 +1,10 @@
+body {
+    background-color: var(--white);
+}
+
+.header-logo {
+    padding-bottom: 10px;
+}
+.posts-container {
+    background-color: var(--white);
+}

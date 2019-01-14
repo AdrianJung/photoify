@@ -13,11 +13,13 @@
   font-weight: 300;
   line-height: 32px;
   font-size: 16px;
-  color: black;
+  color: var(--white);
   margin: 10px 55px 10px 55px;
 }
 .modal-content {
-  border: 0.5px solid var(--orange);
+  border: 0.5px solid var(--white);
+  background-color: var(--main);
+  color: var(--white);
   padding: 12% 0 12% 0;
   position: relative;
   right: 0;
@@ -41,7 +43,6 @@
   text-align: center;
   margin: 5px 0 5px 0;
   font-size: 24px;
-  color: red;
   animation-name: textfade;
   animation-duration: 2.5s;
   animation-fill-mode: forwards;
@@ -65,7 +66,7 @@
     width: 0vw;
   }
   to {
-    width: 50vw;
+    width: 200px;
   }
 }
 

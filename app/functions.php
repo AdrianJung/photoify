@@ -23,7 +23,6 @@ function getPosts($pdo) {
         INNER JOIN users ON posts.user_id = users.id
         WHERE users.id = posts.user_id
         ORDER BY timestamp desc");
-        
     $statement->bindParam(':user_id', $_SESSION['user']['id']);
     $statement->execute();
 	$posts = $statement->fetchAll(PDO::FETCH_ASSOC);

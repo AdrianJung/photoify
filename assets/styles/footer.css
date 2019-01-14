@@ -8,7 +8,7 @@
 .footer {
   display: flex;
   flex: 1;
-  background-color: var(--orange);
+  background-color: var(--main);
   align-items: center;
   justify-content: center;
 }

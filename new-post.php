@@ -1,11 +1,21 @@
 <?php require __DIR__.'/views/header.php'; ?>
+<link rel="stylesheet" href="/assets/styles/login.css">
     <h1 class="logo header-logo">Photoify.</h1>
-    <h4>New Post</h4>
+    <h4 class="new-post-header">New Post</h4>
+    <div class="new-post-container">
     <form action="app/posts/store.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" id="image" type="file" multiple="">
+    <input class="file-input" type="file"  onchange="previewFile()" name="image" id="image" type="file" multiple="">
+    <br>
+    <img class="previewimage" src="" height="200">
+    <br>
+    <div class="select-image-div">
+    <input type="button" class="button image-button" value="Select image" onclick="document.getElementById('image').click();"/>
+    <br>
+        <input type="text" name="description" placeholder="add description">
         <br>
-        <input type="text" name="description" placeholder="description">
-        <br>
-      <button type="submit" name="button">Submit</button>
+        <button type="submit" class="button" name="button">Submit</button>
     </form>
+</div>
+    </div>
+    <script src="/assets/scripts/preview.js"></script>
 <?php require __DIR__.'/views/footer.php'; ?>

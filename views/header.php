@@ -2,6 +2,7 @@
 // Always start by loading the default application setup.
 require __DIR__.'/../app/autoload.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,6 @@ require __DIR__.'/../app/autoload.php';
     <link rel="stylesheet" href="/assets/styles/modal.css">
     <link rel="stylesheet" href="/assets/styles/posts.css">
     <link rel="stylesheet" href="/assets/styles/hamburger.css">
-    <link rel="stylesheet" href="/assets/styles/profile.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto:400,500" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>

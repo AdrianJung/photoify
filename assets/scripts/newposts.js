@@ -25,8 +25,8 @@ const createPost = (json) => {
         <div class="post-image-container">
         <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
         </div>
-        <p> <b>${post.description}</b></p>
         <div class="post-description">
+        <p class="post-description-text"> <b>${post.description}</b>
         <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
         <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
         </button>
@@ -35,6 +35,7 @@ const createPost = (json) => {
         <p class="likes" data-id="${post.post_id}"> ${post.no_likes}</p>
         </form>
         </div>
+        </p>
         <div data-id="${post.post_id}" class="commentscontainer">
         <div class="comments-section" data-id="${post.post_id}">
         ${comments}
@@ -152,15 +153,16 @@ const handleClickLikes = (event) => {
         })
     }, 40)
 }
+
 const deleteCookie = (name) => {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 let imagecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$/)
+
 getData(url)
 .then(data => {
     if (window.location.pathname === '/profile.php') {
-        
         if (!imagecookie) {
             let currentUser = getCookieVal('userid')
             const userfilter = data => data.filter(user => user.user_id === currentUser)

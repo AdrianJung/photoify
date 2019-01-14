@@ -1,6 +1,6 @@
 .icon {
   z-index: 3;
-  position: fixed;
+  position: absolute;
   right: -2%;
   width: 80px;
   height: 80px;
@@ -14,7 +14,7 @@
 }
 
 .hamburger {
-  position: fixed;
+  position: absolute;
   z-index: 3;
   top: 45%;
   left: 50%;
@@ -28,7 +28,7 @@
 
 .hamburger:after {
   content: "";
-  position: fixed;
+  position: absolute;
   width: 50px;
   height: 6px;
   background: var(--white);
@@ -37,7 +37,7 @@
 
 .hamburger:before {
   content: "";
-  position: fixed;
+  position: absolute;
   width: 50px;
   height: 6px;
   background: var(--white);
@@ -86,5 +86,16 @@
   .icon {
     transform: scale(0.6);
     top: -1%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .icon {
+    transform: scale(0.7);
+    top: -1%;
+    right: -0.2%;
+  }
+  .modal-content {
+    padding: 5% 0 5% 0;
   }
 }

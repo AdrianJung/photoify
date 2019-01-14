@@ -34,8 +34,8 @@ create a [Instagram](https://enmwikipediaorg/wiki/Instagram) clone which we call
 # Front-end
 
 - [x] Wireframes
-  - [x] choose fonts
-  - [x] basic layout in figma
+- [x] choose fonts
+- [x] basic layout in figma
 - [x] Decide on frameworks
 - [/] create css variables for fonts, spaces, padding/margin, and colors
 - [ ] setup mediaquerys early so it's responsive from the start // Decide what content is shown when

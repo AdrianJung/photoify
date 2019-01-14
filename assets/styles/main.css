@@ -1,13 +1,14 @@
 :root {
-  --orange: rgba(251, 177, 60, 1);
-  --faded-orange: rgba(251, 177, 60, 0.5);
+  --main: rgb(7, 7, 10);
+  --faded-main: rgba(7, 7, 10, 0.5);
   --white: whitesmoke;
 }
 
 body {
   height: 100vh;
   max-width: 100vw;
-  background-color: var(--orange);
+  background-color: var(--main);
+  font-family: "Roboto", sans-serif;
 }
 
 * {
@@ -21,22 +22,25 @@ p {
 input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0px 9999px var(--white);
 }
-.background {
-  background-color: var(--white);
-}
+
 .logo {
   font-family: "Righteous", cursive;
-  font-size: 60px;
   color: var(--white);
   text-align: center;
 }
 .header-logo {
+  font-size: 60px;
   padding-top: 10px;
   font-size: 40px;
-  background-color: var(--orange);
+  background-color: var(--main);
+}
+.new-post-header {
+  font-family: "Roboto", sans-serif;
+  color: var(--main);
+  text-align: center;
 }
  .loginlogo {
-     color: var(--orange);
+     color: var(--main);
  }
 .login-container {
   position: relative;
@@ -49,7 +53,7 @@ input:-webkit-autofill {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: var(--orange);
+  color: var(--main);
   margin-top: 20px;
   font-weight: 500;
 }
@@ -57,7 +61,7 @@ input:-webkit-autofill {
   margin: 0 15px 0 0;
 }
 .sign-up {
-  color: var(--faded-orange);
+  color: var(--faded-main);
 }
 /* .sign-in::after {
   content: "";
@@ -66,7 +70,7 @@ input:-webkit-autofill {
   bottom: 82.5%;
   width: 87px;
   height: 3px;
-  background: var(--orange);
+  background: var(--main);
 }
 .sign-up::after {
   content: "";
@@ -75,21 +79,21 @@ input:-webkit-autofill {
   bottom: 82.5%;
   width: 87px;
   height: 3px;
-  background: var(--faded-orange);
+  background: var(--faded-main);
 }
 
 .up-after::after {
-  background: var(--orange);
+  background: var(--main);
 }
 .in-after::after {
-  background: var(--faded-orange);
+  background: var(--faded-main);
 }
 .in-after-style {
-  background: var(--orange);
+  background: var(--main);
 } */
 .svg {
   position: relative;
-  color: var(--orange);
+  color: var(--main);
   font-size: 19px;
   margin-left: 30px;
 }
@@ -109,21 +113,27 @@ input:-webkit-autofill {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
-hr {
+.hr-login {
   position: relative;
   bottom: 17px;
   left: 11%;
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 217px;
   height: 1.7px;
-  background-color: var(--orange);
+  background-color: var(--main);
+}
+.hr-profile{
+  margin-bottom: 1px;
+
 }
 
 textarea:focus,
 input:focus {
   outline: none;
 }
+
+
 .input {
   position: relative;
   background: var(--white);
@@ -139,22 +149,25 @@ input:focus {
   height: 100vh;
   margin-top: 10px;
 }
+.file-input {
+  display: none;
+}
 .faded {
-  color: var(--faded-orange);
+  color: var(--faded-main);
 }
 .not-faded {
-  color: var(--orange);
+  color: var(--main);
 }
 
 .button {
   font-family: "Roboto", sans-serif;
   position: relative;
-  border: 2px solid var(--orange);
+  border: 2px solid var(--main);
   left: 29%;
   margin-top: 10px;
   height: 30px;
   width: 110px;
-  background-color: var(--orange);
+  background-color: var(--main);
   border-radius: 5%;
   color: var(--white);
   font-size: 18px;
@@ -169,29 +182,13 @@ input:focus {
   animation-fill-mode: forwards;
 }
 
-.wheel {
-  float: right;
-  margin: 10px;
-}
-.cog {
-  font-size: 40px;
-}
-
-.profile-image {
-  height: 80px;
-  width: 80px;
-}
-.profile-image-name {
-  margin: 20px 0px 0px 10px;
-  display: flex;
-}
 .error-div {
   height: 70px;
   width: 250px;
-  border: 2px solid var(--orange);
+  border: 2px solid var(--main);
   border-radius: 2%;
-  box-shadow : 0 1px 2px var(--faded-orange), 0 1px 3px var(--faded-orange) ;
-  background-color: var(--faded-orange);
+  box-shadow : 0 1px 2px var(--main), 0 1px 3px var(--main) ;
+  background-color: var(--white);
   z-index: 3;
   position: absolute;
   right: 14vw;
@@ -205,7 +202,7 @@ input:focus {
 }
 .error-text {
   font-family: "Roboto", sans-serif;
-  color: var(--white);
+  color: var(--main);
   font-size: 22px;
   font-weight: 400;
   
