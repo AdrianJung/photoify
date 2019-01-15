@@ -36,4 +36,6 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
         $statement->execute();
         redirect('/login.php');
     }
+    $_SESSION['error'] = "Password doesn't match";
+    redirect('/login.php');
 };

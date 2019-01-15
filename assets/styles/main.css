@@ -1,20 +1,17 @@
 :root {
-  --main: rgb(7, 7, 10);
-  --faded-main: rgba(7, 7, 10, 0.5);
   --white: whitesmoke;
+  --black:rgb(7, 7, 10);
+  --faded-black: rgba(7, 7, 10, 0.3);
 }
 
 body {
   height: 100vh;
   max-width: 100vw;
-  background-color: var(--main);
+  background-color: var(--white);
   font-family: "Roboto", sans-serif;
+  color: var(--black);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
 p {
   padding: 0;
   margin: 0;
@@ -25,22 +22,22 @@ input:-webkit-autofill {
 
 .logo {
   font-family: "Righteous", cursive;
-  color: var(--white);
+  color: var(--black);
   text-align: center;
 }
 .header-logo {
   font-size: 60px;
   padding-top: 10px;
   font-size: 40px;
-  background-color: var(--main);
+  background-color: var(--white);
 }
 .new-post-header {
   font-family: "Roboto", sans-serif;
-  color: var(--main);
+  color: var(--white);
   text-align: center;
 }
  .loginlogo {
-     color: var(--main);
+     color: var(--black);
  }
 .login-container {
   position: relative;
@@ -53,7 +50,7 @@ input:-webkit-autofill {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  color: var(--main);
+  color: var(--black);
   margin-top: 20px;
   font-weight: 500;
 }
@@ -61,39 +58,12 @@ input:-webkit-autofill {
   margin: 0 15px 0 0;
 }
 .sign-up {
-  color: var(--faded-main);
-}
-/* .sign-in::after {
-  content: "";
-  position: absolute;
-  left: 23.4%;
-  bottom: 82.5%;
-  width: 87px;
-  height: 3px;
-  background: var(--main);
-}
-.sign-up::after {
-  content: "";
-  position: absolute;
-  left: 51.5%;
-  bottom: 82.5%;
-  width: 87px;
-  height: 3px;
-  background: var(--faded-main);
+  color: var(--faded-black);
 }
 
-.up-after::after {
-  background: var(--main);
-}
-.in-after::after {
-  background: var(--faded-main);
-}
-.in-after-style {
-  background: var(--main);
-} */
 .svg {
   position: relative;
-  color: var(--main);
+  color: var(--black);
   font-size: 19px;
   margin-left: 30px;
 }
@@ -121,7 +91,7 @@ input:-webkit-autofill {
   padding: 0;
   width: 217px;
   height: 1.7px;
-  background-color: var(--main);
+  background-color: var(--black);
 }
 .hr-profile{
   margin-bottom: 1px;
@@ -153,21 +123,21 @@ input:focus {
   display: none;
 }
 .faded {
-  color: var(--faded-main);
+  color: var(--faded-black);
 }
 .not-faded {
-  color: var(--main);
+  color: var(--black);
 }
 
 .button {
   font-family: "Roboto", sans-serif;
   position: relative;
-  border: 2px solid var(--main);
+  border: 1px solid var(--black);
   left: 29%;
   margin-top: 10px;
   height: 30px;
   width: 110px;
-  background-color: var(--main);
+  background-color: var(--black);
   border-radius: 5%;
   color: var(--white);
   font-size: 18px;
@@ -185,14 +155,14 @@ input:focus {
 .error-div {
   height: 70px;
   width: 250px;
-  border: 2px solid var(--main);
+  border: 2px solid var(--black);
   border-radius: 2%;
-  box-shadow : 0 1px 2px var(--main), 0 1px 3px var(--main) ;
+  box-shadow : 0 1px 2px var(--white), 0 1px 3px var(--white) ;
   background-color: var(--white);
   z-index: 3;
-  position: absolute;
-  right: 14vw;
-  top: 15vh;
+  position: relative;
+  top: 50px;
+  align-self: center; 
   padding-top: 15px;
   text-align: center;
   animation-name: register;
@@ -202,7 +172,7 @@ input:focus {
 }
 .error-text {
   font-family: "Roboto", sans-serif;
-  color: var(--main);
+  color: var(--black);
   font-size: 22px;
   font-weight: 400;
   

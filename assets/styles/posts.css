@@ -6,12 +6,12 @@
   position: relative;
   margin-bottom: 5vh;
   padding: 0 10px 10px 10px;
-  background-color: var(--main);
+  background-color: var(--white);
 
   
 }
 .post-box {
-  box-shadow : 0 0px 2px rgba(0, 0, 0, 0.50), 0 0px 0px rgba(0, 0, 0, 0.46) ;
+  box-shadow : 0 0px 5px rgba(0, 0, 0, 0.50), 0 0px 0px rgba(0, 0, 0, 0.46) ;
   border-radius: 2%;
   width: 340px;
   margin: 10px 0 30px 0;
@@ -19,6 +19,7 @@
   background-color: var(--white);
 }
 .post-header {
+  margin: 3px 0 5px 0;
   width: 100%;
   display: flex;
 }
@@ -40,7 +41,7 @@
 }
 .post-description {
   display: flex;
-  margin: 5px 4px 0px 4px;
+  margin: 10px 4px 0px 4px;
 }
 .post-description-text {
   flex: 4;
@@ -53,11 +54,11 @@
   width: 40px;
 }
 .likeBtn {
-  background-color: var(--main);
+  background-color: var(--black);
   border-radius: 10%;
   border: none;
   color: var(--white);
-  padding: 7px 12px;
+  padding: 6px 10px;
   font-size: 12px;
   cursor: pointer;
 }
@@ -65,13 +66,13 @@
 .post-button {
   position: relative;
   font-family: "Roboto", sans-serif;
-  border: 2px solid var(--main);
-  top: -10px;
+  border: 2px solid var(--black);
+  top: -5px;
   border-radius: 8%;
   margin-top: 10px;
-  height: 20px;
+  height: 25px;
   width: 55px;
-  background-color: var(--main);
+  background-color: var(--black);
   color: var(--white);
   font-size: 12px;
   text-align: center;
@@ -79,22 +80,24 @@
   cursor: pointer;
 }
 .delete-post {
-  left: 135px;
+  left: 140px;
 }
 .edit-post {
-  left: 20px;
+  left: 25px;
 }
 .likes {
   display: inline;
-  color: var(--main);
+  color: var(--black);
   font-size: 16px;
   font-weight: 500;
 }
 
 .commentBtn {
-  border: 2px solid var(--main);
+  position: relative;
+  bottom: 2px;
+  border: 2px solid var(--black);
   border-radius: 5%;
-  background-color: var(--main);
+  background-color: var(--black);
   color: var(--white);
   font-size: 12px;
   text-align: center;
@@ -103,6 +106,10 @@
   height: 25px;
   width: 65px;
 
+}
+
+.comment-input {
+  width: 245px;
 }
 .likeform {
   flex: 1;
@@ -114,17 +121,13 @@
   margin-left: 4px;
 }
 .comment-username {
-  color: var(--main);
+  color: var(--black);
 }
 .hidden {
   display:none!important;
 }
-.select-image-div {
-  position: relative;
-  top: 100px;
-}
 .new-post-header {
-  margin-bottom: 40px;
+  color: var(--black);
 }
 .new-post-container {
   display: flex;
@@ -132,5 +135,13 @@
   align-items: center;
 }
 .image-button {
+  margin-bottom: 10px;
+  width: 120px;
+  left: 0;
+}
+.previewimage {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.new-post-input {
   margin-bottom: 10px;
 }

@@ -43,7 +43,7 @@ const createPost = (json) => {
         </div>
         <form class="comments-form" target="hiddenFrame" action="../app/posts/comments.php" method="post">
         <input class="comment-input" type="text" name="comment" placeholder="" required>
-        <button type="submit" data-id="${post.post_id}" class="commentBtn">comment</button>
+        <button type="submit" data-id="${post.post_id}" class="commentBtn">Comment</button>
         </form>
         </div>      
         `
@@ -177,6 +177,9 @@ getData(url)
             })
         }
         if (imagecookie) {
+            const profileInfo = document.querySelector('.profile-image-name')
+            profileInfo.classList.add('hidden')
+
             const cookieid = getCookieVal("imagecookie")
             const postsfilter = data => data.filter(post => post.post_id === cookieid)
             data = postsfilter(data)

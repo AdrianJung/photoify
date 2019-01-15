@@ -1,5 +1,6 @@
 body {
     background-color: var(--white);
+    color: black;
 }
 
 .header-logo {

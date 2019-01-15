@@ -1,6 +1,13 @@
 <?php require __DIR__.'/views/header.php'; ?>
     <h1 class="logo header-logo">Photoify.</h1>
     <h4>profile image</h4>
+    <?php if(isset($_SESSION['error'])): ?>
+    <div class="error-div">
+            <p class="error-text">
+                <?php echo $_SESSION['error']; ?>
+            </p>
+        </div>
+    <?php endif;?>
 <form class="" action="/app/users/profile-image.php" method="POST" enctype="multipart/form-data">
   <div class="">
     <input type="file" name="profilepic" id="profilepic" type="file" multiple="">
@@ -28,10 +35,24 @@
     <input class="" type="password" name="confirmPassword" required>
     <br>
     <a href="profile.php">
-        <button type="submit" class="">enter</button>
+        <button type="submit" class="">Update</button>
     </a>
+</form>
+<h4>Delete Account</h4>
+<form action="app/users/delete-user.php" method="post">
+    <label for="username">Username</label>
+    <input class="" type="text" name="username" required>
+    <br>
+    <label for="password">Password</label>
+    <input class="" type="password" name="password" required>
+    <br>
+    <label for="password">Confirm Password</label>
+    <input class="" type="password" name="confirmPassword" required>
+    <br>
+    <button type="submit" class="delete-account-button">Delete Account</button>
 </form>
 <?php if(isset($_SESSION['error'])):?>
 <?= $_SESSION['error']; ?>
 <?php endif;?>
+<script src="/assets/scripts/update-user.js"></script>
 <?php require __DIR__.'/views/footer.php';?>

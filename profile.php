@@ -13,12 +13,9 @@
     <div id="simple-modal" class="modal">
         <div class="modal-content">
             <a href="update-user.php">
-            <p class="text-item text-1">Profile Settings</p>
+            <p class="text-item text-1">Account Settings</p>
             <a href="update-password.php">
                 <p class="text-item text-2">Change password</p>
-            </a>
-            <a href="/app/users/delete-user.php">
-                <p class="text-item text-3">Delete Account</p>
             </a>
             <a href="/app/users/logout.php">
                 <p class="text-item text-3">Logout</p>
@@ -41,4 +38,3 @@
 <?php require __DIR__.'/views/footer.php'; ?>
 <script src="/assets/scripts/profile.js"></script>
 <script src="/assets/scripts/newposts.js"></script>
-
