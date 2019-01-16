@@ -32,7 +32,9 @@
 <hr class="hr-profile">
 <div class="profile-image-container" id="#profilecontainer"></div>
  <div class="posts-container"></div>
+
 <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+
 </div>
 </div>
 <?php require __DIR__.'/views/footer.php'; ?>

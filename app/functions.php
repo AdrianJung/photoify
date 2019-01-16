@@ -17,6 +17,19 @@ if (!function_exists('redirect')) {
     }
 }
 
+function rrmdir($path) {
+    // Open the source directory to read in files
+       $i = new DirectoryIterator($path);
+       foreach($i as $f) {
+           if($f->isFile()) {
+               unlink($f->getRealPath());
+           } else if(!$f->isDot() && $f->isDir()) {
+               rrmdir($f->getRealPath());
+           }
+       }
+       rmdir($path);
+}
+
 function getPosts($pdo) {
     $statement = $pdo->prepare("SELECT posts.*, users.username, users.id, users.avatar, users.created_at, likes.has_liked FROM posts 
         LEFT JOIN likes ON posts.post_id = likes.post_id AND likes.user_id = :user_id

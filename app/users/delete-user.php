@@ -25,13 +25,17 @@ if(isset($_POST['username'], $_POST['password'], $_POST['confirmPassword'])){
        
         $userId = (int)$users['id'];
         $dbPassword = $users['password'];
+
+        
     
         // checks if given password is equal to password in db
         if (password_verify($password, $dbPassword))
         {
-            // die(var_dump(rmdir('../uploads/'.$userId)));
+         
+            rrmdir('../uploads/'.$userId);
 
             $statement = $pdo->prepare('DELETE FROM users WHERE id = :user_id');
+            
             $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $statement->execute();
             $statement = $pdo->prepare('DELETE FROM posts WHERE user_id = :user_id');

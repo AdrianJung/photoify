@@ -45,7 +45,7 @@
 }
 .post-description-text {
   flex: 4;
-  margin-bottom: 10px;
+  margin: 0 0 10px 2px;
 }
 .post-user-image {
   border-radius: 15%;
@@ -64,12 +64,10 @@
 }
 
 .post-button {
-  position: relative;
   font-family: "Roboto", sans-serif;
   border: 2px solid var(--black);
-  top: -5px;
   border-radius: 8%;
-  margin-top: 10px;
+  margin-top: 5px;
   height: 25px;
   width: 55px;
   background-color: var(--black);
@@ -80,10 +78,10 @@
   cursor: pointer;
 }
 .delete-post {
-  left: 185px;
+  margin-right: 5px;
 }
 .edit-post {
-  left: 70px;
+
 }
 .likes {
   display: inline;
@@ -121,7 +119,11 @@
   margin-left: 4px;
 }
 .comment-username {
+  margin-top: 8px;
   color: var(--black);
+}
+.username-big {
+  margin: 8px 60px 0 0;
 }
 .hidden {
   display:none!important;

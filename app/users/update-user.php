@@ -38,6 +38,6 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
 
         $statement->execute();
 
+        redirect('logout.php');
     }
 };
-redirect('logout.php');

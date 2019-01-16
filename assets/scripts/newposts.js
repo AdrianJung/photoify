@@ -14,13 +14,19 @@ const createPost = (json) => {
         <div class="post-box">
         <div class="post-header">
         <img src="${post.avatar}" style ="background-image: url()"class="post-user-image" alt="">
-        <h3 class="comment-username">${post.username}</h3>
+        <h4 class="comment-username username-big">${post.username}</h4>
         <form class="deletePost-form" target="hiddenFrame" action="../app/posts/update.php" method="post">
         <button name="deletePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button delete-post" type="submit">Delete</button>
         </form>
-        <form class="deletePost-form" target="hiddenFrame" action="../app/posts/update.php" method="post">
-        <button name="updatePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button edit-post" type="submit">Edit</button>
+        <button data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button show-edit-button">Edit</button>
+        </div>
+        <div class="edit-post-container hidden" data-id="${post.post_id}">
+
+        <form target="hiddenFrame" action="../app/posts/update.php" method="post">
+        <input class="comment-input" type="text" name="description" placeholder="Add new description" required>
+        <button data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button edit-post" type="submit">Submit</button>
         </form>
+
         </div>
         <div class="post-image-container">
         <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
@@ -126,6 +132,11 @@ const handleClickDelete = (event) => {
     document.cookie = "delete=" + postId
     window.location.reload()
 }
+const handleClickEdit = (event) => {
+    let postId = event.target.dataset.postid
+    document.cookie = "update=" + postId
+    window.location.reload()
+}
 
 const displayButtonsHandler = (elts) => {
     elts.map(el => {
@@ -154,10 +165,14 @@ const handleClickLikes = (event) => {
     }, 40)
 }
 
+const showEdit = (event) => {
+    event.target.parentNode.nextElementSibling.classList.toggle('hidden')
+}
+
 const deleteCookie = (name) => {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
-
+       
 let imagecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$/)
 
 getData(url)
@@ -170,7 +185,6 @@ getData(url)
             createPostProfile(data)
             const images = [...document.querySelectorAll('.profile-grid-image')]
             images.forEach(image => {
-                // (image.clientHeight > image.clientWidth) ? image.classList.add('portrait') : image.classList.add('landscape')
                 image.addEventListener('click', (event) => {
                     document.cookie = "imagecookie=" + event.target.dataset.id
                     window.location.reload()
@@ -180,7 +194,7 @@ getData(url)
         if (imagecookie) {
             const profileInfo = document.querySelector('.profile-image-name')
             profileInfo.classList.add('hidden')
-
+            
             const cookieid = getCookieVal("imagecookie")
             const postsfilter = data => data.filter(post => post.post_id === cookieid)
             data = postsfilter(data)
@@ -192,6 +206,7 @@ getData(url)
             initEventListeners(buttons, handleClickLikes)
             initEventListeners(commentbuttons, handleClickComment)
             initEventListeners(deleteButtons, handleClickDelete)
+            initEventListeners(editButtons, handleClickEdit)
             hideButtons(data, buttons)
             displayButtonsHandler(deleteButtons)
             displayButtonsHandler(editButtons)
@@ -199,14 +214,19 @@ getData(url)
         
     } else {
         createPost(data)
-     
         const buttons = [...document.querySelectorAll('.likeBtn')]
         const deleteButtons = [...document.querySelectorAll('.delete-post')]
         const editButtons = [...document.querySelectorAll('.edit-post')]
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]
+
+        const showEditButtons = [...document.querySelectorAll('.show-edit-button')]
+        console.log(showEditButtons)
+
         initEventListeners(buttons, handleClickLikes)
         initEventListeners(commentbuttons, handleClickComment)
         initEventListeners(deleteButtons, handleClickDelete)
+        initEventListeners(editButtons, handleClickEdit) 
+        initEventListeners(showEditButtons, showEdit) 
         hideButtons(data, buttons)
         displayButtonsHandler(deleteButtons)
         displayButtonsHandler(editButtons)

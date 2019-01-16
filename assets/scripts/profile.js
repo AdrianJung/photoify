@@ -7,13 +7,11 @@ const icon = document.querySelector(".icon");
 
 icon.addEventListener("click", () => {
   modal.classList.toggle("active");
-  body.classList.toggle("menuopen");
   icon.classList.toggle("active");
 });
 Array.from(textitem).forEach(text => {
   text.addEventListener("click", () => {
     modal.classList.toggle("active");
     icon.classList.toggle("active");
-    body.classList.toggle("menuopen");
   });
 });
