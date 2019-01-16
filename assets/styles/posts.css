@@ -80,10 +80,10 @@
   cursor: pointer;
 }
 .delete-post {
-  left: 140px;
+  left: 185px;
 }
 .edit-post {
-  left: 25px;
+  left: 70px;
 }
 .likes {
   display: inline;

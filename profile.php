@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php'; ?>
-<link rel="stylesheet" href="/assets/styles/login.css">
 <link rel="stylesheet" href="/assets/styles/profile.css">
+<link rel="stylesheet" href="/assets/styles/login.css">
 <?php if (!isset($_SESSION['user'])): ?>
     <?php redirect('/login.php');?>
 <?php endif ;?>

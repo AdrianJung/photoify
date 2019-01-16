@@ -170,6 +170,7 @@ getData(url)
             createPostProfile(data)
             const images = [...document.querySelectorAll('.profile-grid-image')]
             images.forEach(image => {
+                // (image.clientHeight > image.clientWidth) ? image.classList.add('portrait') : image.classList.add('landscape')
                 image.addEventListener('click', (event) => {
                     document.cookie = "imagecookie=" + event.target.dataset.id
                     window.location.reload()
@@ -198,7 +199,7 @@ getData(url)
         
     } else {
         createPost(data)
-        console.log(data)
+     
         const buttons = [...document.querySelectorAll('.likeBtn')]
         const deleteButtons = [...document.querySelectorAll('.delete-post')]
         const editButtons = [...document.querySelectorAll('.edit-post')]

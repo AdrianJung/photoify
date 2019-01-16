@@ -33,8 +33,8 @@ if(isset($_POST['username'], $_POST['password'], $_POST['confirmPassword'])){
             $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $statement->execute();
 
-            redirect('/app/users/logout.php');
         }
+        redirect('/app/users/logout.php');
     
     }
     $_SESSION['error'] = "Wrong Credentials!";
