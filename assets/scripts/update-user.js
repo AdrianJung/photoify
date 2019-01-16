@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 const errordiv = document.querySelector('.error-div');
 
 if (errordiv) 

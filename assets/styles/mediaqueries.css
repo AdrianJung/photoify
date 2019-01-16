@@ -3,13 +3,16 @@
     bottom: 73.5%;
     left: 40.8%;
   }
+
   .sign-up::after {
     left: 50.5%;
     bottom: 73.5%;
   }
+
   .login-container {
     top: 45px;
   }
+
   .input-box {
     height: 65vh;
   }

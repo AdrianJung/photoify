@@ -1,14 +1,25 @@
 :root {
   --white: whitesmoke;
-  --black:rgb(7, 7, 10);
+  --black: rgb(7, 7, 10);
   --faded-black: rgba(7, 7, 10, 0.3);
+}
+@font-face {
+	font-family: 'Righteous';
+	src: url('../fonts/Righteous.woff') format('woff')
+	
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto.woff') format('woff')
+    
 }
 
 body {
   height: 100vh;
   max-width: 100vw;
   background-color: var(--white);
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto;
   color: var(--black);
 }
 
@@ -16,37 +27,43 @@ p {
   padding: 0;
   margin: 0;
 }
+
 input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0px 9999px var(--white);
 }
 
 .logo {
-  font-family: "Righteous", cursive;
+  font-family: Righteous;
   color: var(--black);
   text-align: center;
 }
+
 .header-logo {
   font-size: 60px;
   padding-top: 10px;
   font-size: 40px;
   background-color: var(--white);
 }
+
 .new-post-header {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto;
   color: var(--white);
   text-align: center;
 }
- .loginlogo {
-     color: var(--black);
- }
+
+.loginlogo {
+  color: var(--black);
+}
+
 .login-container {
   position: relative;
   top: 85px;
   display: flex;
   flex-direction: column;
 }
+
 .sign {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -54,9 +71,11 @@ input:-webkit-autofill {
   margin-top: 20px;
   font-weight: 500;
 }
+
 .sign-in {
   margin: 0 15px 0 0;
 }
+
 .sign-up {
   color: var(--faded-black);
 }
@@ -71,18 +90,21 @@ input:-webkit-autofill {
 .registerform {
   display: none;
 }
+
 .block {
   display: block;
   animation-name: register;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 .none {
   display: none;
   animation-name: register;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 .hr-login {
   position: relative;
   bottom: 17px;
@@ -93,7 +115,8 @@ input:-webkit-autofill {
   height: 1.7px;
   background-color: var(--black);
 }
-.hr-profile{
+
+.hr-profile {
   margin-bottom: 1px;
 
 }
@@ -112,6 +135,7 @@ input:focus {
   border: 0;
   margin-bottom: 20px;
 }
+
 .input-box {
   display: flex;
   flex-direction: column;
@@ -119,18 +143,21 @@ input:focus {
   height: 100vh;
   margin-top: 10px;
 }
+
 .file-input {
   display: none;
 }
+
 .faded {
   color: var(--faded-black);
 }
+
 .not-faded {
   color: var(--black);
 }
 
 .button {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto;
   position: relative;
   border: 1px solid var(--black);
   left: 29%;
@@ -145,8 +172,9 @@ input:focus {
   font-weight: 500;
   cursor: pointer;
 }
+
 .default-button {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto;
   border: 1px solid var(--black);
   height: 30px;
   width: 80px;
@@ -169,42 +197,48 @@ input:focus {
 .error-div {
   border: 2px solid var(--black);
   border-radius: 2%;
-  box-shadow : 0 1px 2px var(--white), 0 1px 3px var(--white) ;
+  box-shadow: 0 1px 2px var(--white), 0 1px 3px var(--white);
   background-color: var(--white);
   z-index: 3;
   position: relative;
   top: 50px;
-  align-self: center; 
+  align-self: center;
   padding: 20px;
   text-align: center;
   animation-name: register;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 .error-text {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto;
   color: var(--black);
   font-size: 18px;
   font-weight: 400;
 }
+
 .update-user-page-container {
   margin: 0 0 13vh 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 label {
   font-weight: 500;
 }
+
 .update-image-form {
   position: relative;
   right: 13px;
 
 }
+
 @keyframes register {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

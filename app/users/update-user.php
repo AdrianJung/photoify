@@ -27,7 +27,6 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
         if (password_verify($password, $dbPassword))
         {
             
-            
             // sanitizes and saves posted data to variables
             $firstName = filter_var(trim($_POST['firstName']), FILTER_SANITIZE_STRING);
             $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
@@ -44,7 +43,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
             {
                 die(var_dump($pdo->errorInfo()));
             }
-            // binds variables to parameteres for insert statement
+
             $statement->bindParam(':firstName', $firstName, PDO::PARAM_STR);
             $statement->bindParam(':lastName', $lastName, PDO::PARAM_STR);
             $statement->bindParam(':id', $id, PDO::PARAM_STR);
@@ -55,12 +54,10 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
             
             $statement->execute();
                     
-
             $_SESSION['user']['name'] = $firstName;
             $_SESSION['user']['lastName'] = $lastName;
             $_SESSION['user']['username'] = $username;
             $_SESSION['user']['email'] = $email;
-  
             
             redirect('/profile.php');
             

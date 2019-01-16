@@ -1,11 +1,12 @@
 body {
-    background-color: var(--white);
-    color: black;
+  background-color: var(--white);
+  color: black;
 }
 
 .header-logo {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
+
 .posts-container {
-    background-color: var(--white);
+  background-color: var(--white);
 }

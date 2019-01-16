@@ -2,7 +2,6 @@
 declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 if (isset($_FILES['profilepic'])) {
-
     $image = ($_FILES['profilepic']) ? $_FILES['profilepic'] : $user['avatar'];
 
     $username = $_SESSION['user']['username'];
@@ -29,4 +28,5 @@ if (isset($_FILES['profilepic'])) {
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     $_SESSION['user']['avatar'] = $user['avatar'];
 };
+
 redirect('/profile.php');

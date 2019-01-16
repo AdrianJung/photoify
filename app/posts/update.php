@@ -22,6 +22,7 @@ if (isset($_POST['description'])) {
         };
 
 }
+
 if (isset($_POST['deletePost'])) {
     
     $postId = $_COOKIE['delete'];

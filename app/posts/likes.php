@@ -29,7 +29,6 @@ require __DIR__.'/../../views/header.php';
      $statement->execute();
      $updated_likes = $statement->fetch(PDO::FETCH_ASSOC);
      
-     
      $statement = $pdo->prepare('INSERT INTO likes (has_liked, post_id, user_id) VALUES (:has_liked, :post_id, :user_id)');
      
      $statement->bindParam(':has_liked', $hasLiked, PDO::PARAM_INT);
@@ -45,4 +44,3 @@ require __DIR__.'/../../views/header.php';
      }
  }
 
-?>

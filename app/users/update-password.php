@@ -34,7 +34,9 @@ if (isset($_POST['newPassword'], $_POST['oldPassword'], $_POST['username']))
 
         }
     }
+
     $_SESSION['error'] = "wrong password!";
 
     redirect('/update.php');
+    
 };

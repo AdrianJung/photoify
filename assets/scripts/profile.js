@@ -9,6 +9,7 @@ icon.addEventListener("click", () => {
   modal.classList.toggle("active");
   icon.classList.toggle("active");
 });
+
 Array.from(textitem).forEach(text => {
   text.addEventListener("click", () => {
     modal.classList.toggle("active");

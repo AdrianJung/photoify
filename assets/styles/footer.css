@@ -5,6 +5,7 @@
   position: fixed;
   bottom: 0;
 }
+
 .footer {
   display: flex;
   flex: 1;
@@ -12,6 +13,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .footer-item {
   color: var(--black);
   font-size: 40px;

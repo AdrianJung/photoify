@@ -1,8 +1,11 @@
+'use strict';
+
 let url = 'http://localhost:8888/app/posts/full_api.php'
 
 const container = document.querySelector(".posts-container")
 const profilecontainer = document.querySelector('.profile-image-container')
 
+// creates postMarkup for each post in database
 const createPost = (json) => {
     const postsMarkup = json.map(post => {
         const comments = post.comments.map(comment => {
@@ -57,6 +60,7 @@ const createPost = (json) => {
     container.innerHTML = postsMarkup;
 }
 
+// postMarkup for profile image grid
 const createPostProfile = (json) => {
     const profileposts = json.map(post => {
         return `
@@ -67,18 +71,18 @@ const createPostProfile = (json) => {
     }).join('')
     profilecontainer.innerHTML = profileposts
 }
-
+// gets Cookie Value
 const getCookieVal = (name) => {
     var value = "; " + document.cookie
     var parts = value.split("; " + name + "=")
     if (parts.length == 2) return parts.pop().split(";").shift()
 }
-
+// fetch syntax
 const getData = url => {
     return fetch(url)
     .then((resp) => resp.json())
 }
-
+// click event function that accepts elements and a callback function
 const initEventListeners = (elts, callback) => {
     elts.forEach(el => {
         el.addEventListener('click', callback)
@@ -89,7 +93,7 @@ const handleClick = (event) => {
     let postId = event.target.dataset.id
     document.cookie = "like=" + postId
 }
-
+// returns comments to each post when updated
 const handleClickComment = (event) => {
     let postId = event.target.dataset.id
     document.cookie = "postId=" + postId
@@ -117,7 +121,7 @@ const handleClickComment = (event) => {
         })
     }, 100)
 }
-
+// toggles hidden class on likebutton
 const hideButtons = (json, elts) => json.map(post => {
     const likeButtons = elts.filter(el => el.dataset.id === post.post_id)
     if (post.has_liked) {
@@ -126,18 +130,19 @@ const hideButtons = (json, elts) => json.map(post => {
         })
     }
 })
-
+// click handler for delete button
 const handleClickDelete = (event) => {
     let postId = event.target.dataset.postid
     document.cookie = "delete=" + postId
     window.location.reload()
 }
+// creates update cookie
 const handleClickEdit = (event) => {
     let postId = event.target.dataset.postid
     document.cookie = "update=" + postId
     window.location.reload()
 }
-
+// toggles hidden class on buttons
 const displayButtonsHandler = (elts) => {
     elts.map(el => {
         if (getCookieVal('userid') !== el.dataset.id) {
@@ -145,7 +150,7 @@ const displayButtonsHandler = (elts) => {
         }
     })
 }
-
+// handles likes on click
 const handleClickLikes = (event) => {
     let postId = event.target.dataset.id
     document.cookie = "like=" + postId
@@ -164,11 +169,11 @@ const handleClickLikes = (event) => {
         })
     }, 40)
 }
-
+// toggles hidden class on update description
 const showEdit = (event) => {
     event.target.parentNode.nextElementSibling.classList.toggle('hidden')
 }
-
+// removes cookie
 const deleteCookie = (name) => {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
@@ -178,6 +183,7 @@ let imagecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$
 getData(url)
 .then(data => {
     if (window.location.pathname === '/profile.php') {
+        // if no cookie is set from click event shows default profile markup
         if (!imagecookie) {
             let currentUser = getCookieVal('userid')
             const userfilter = data => data.filter(user => user.user_id === currentUser)
@@ -191,6 +197,7 @@ getData(url)
                 })
             })
         }
+        // if thumbnail image is set shows corresponding post
         if (imagecookie) {
             const profileInfo = document.querySelector('.profile-image-name')
             profileInfo.classList.add('hidden')

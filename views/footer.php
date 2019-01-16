@@ -1,7 +1,7 @@
     <?php unset($_SESSION['message']); ?>
     <?php unset($_SESSION['error']); ?>
+    
     <footer>
-
         <div class="footer-container">
             <div data-id="index.php" class=" page-redirect footer footer-1">
                 <i data-id="index.php" class=" page-redirect fas fa-home svg footer-item"></i>
