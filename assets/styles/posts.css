@@ -88,13 +88,13 @@
 
 .delete-post {
   position: relative;
-  left: 90px;
+  left: 5vw;
   margin-right: 5px;
 }
 
 .show-edit-button {
   position: relative;
-  left: 90px;
+  left: 5vw;
 }
 
 .edit-post {

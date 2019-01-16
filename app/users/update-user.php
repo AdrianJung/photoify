@@ -59,6 +59,7 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
             $_SESSION['user']['username'] = $username;
             $_SESSION['user']['email'] = $email;
             
+            $_SESSION['message'] = "Update Successful";
             redirect('/profile.php');
             
         }

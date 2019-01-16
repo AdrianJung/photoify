@@ -1,18 +1,12 @@
 'use strict';
 
-const body = document.querySelector("body");
-const modal = document.querySelector(".modal");
-const textitem = document.querySelectorAll(".text-item");
-const icon = document.querySelector(".icon");
+const errordiv = document.querySelector('.error-div')
 
-icon.addEventListener("click", () => {
-  modal.classList.toggle("active");
-  icon.classList.toggle("active");
-});
-
-Array.from(textitem).forEach(text => {
-  text.addEventListener("click", () => {
-    modal.classList.toggle("active");
-    icon.classList.toggle("active");
-  });
-});
+if (errordiv) 
+{
+  const profilecontainer = document.querySelector('.profile-container')
+  profilecontainer.setAttribute("style", "display: flex; justify-content: center;");
+  setTimeout(() => {
+    window.location.pathname = '/profile.php'
+  }, 2000);
+}
