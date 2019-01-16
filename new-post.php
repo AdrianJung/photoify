@@ -1,8 +1,6 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <link rel="stylesheet" href="/assets/styles/login.css">
     <h1 class="logo header-logo">Photoify.</h1>
-    <h4 class="new-post-header">New Post</h4>
-
     <div class="posts-container">
     <div class="post-box preview-box">
             <div class="post-image-container">
