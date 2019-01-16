@@ -8,25 +8,18 @@ require __DIR__.'/../autoload.php';
 if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['confirmPassword']))
 {
     if ($_POST['password'] === $_POST['confirmPassword'])
-    {
-        $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-        
+    {   
         $password = $_POST['password'];
+
+        $id = $_SESSION['user']['id'];
         
-        $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+        $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
         
-        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
         
         $statement->execute();
         
         $users = $statement->fetch(PDO::FETCH_ASSOC);
-        
-        
-        if (!$users)
-        {   
-            $_SESSION['error'] = "User does not exist";
-            redirect('/../update-user.php');
-        }
         
         $dbPassword = $users['password'];
         
@@ -42,7 +35,6 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
             $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $updated_at = date("Y-m-d");
-            
             $id = $_SESSION['user']['id'];
             
             $statement = $pdo->prepare('UPDATE users SET first_name = :firstName, last_name = :lastName, email = :email, username = :username, password = :password, updated_at = :updated_at WHERE id = :id');
@@ -62,8 +54,15 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
             $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
             
             $statement->execute();
+                    
+
+            $_SESSION['user']['name'] = $firstName;
+            $_SESSION['user']['lastName'] = $lastName;
+            $_SESSION['user']['username'] = $username;
+            $_SESSION['user']['email'] = $email;
+  
             
-            redirect('logout.php');
+            redirect('/profile.php');
             
         }
         

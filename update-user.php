@@ -2,15 +2,15 @@
 <h1 class="logo header-logo">Photoify.</h1>
 <div class="update-user-page-container">
 <?php if (!isset($_SESSION['error'])): ?>
+<form class="update-image-form" action="/app/users/profile-image.php" method="POST" enctype="multipart/form-data">
 <h5>Update profile image</h5>
-<form action="/app/users/profile-image.php" method="POST" enctype="multipart/form-data">
   <div>
     <input type="file" name="profilepic" id="profilepic" type="file" multiple="">
   </div>
-  <button type="submit" name="button">Submit</button>
+  <button class="default-button" type="submit" name="button">Submit</button>
 </form>
-<h5>Update account information</h5>
 <form action="app/users/update-user.php" method="post">
+<h5>Update account information</h5>
     <label for="firstName">First Name</label>
     <input type="text" name="firstName" value="<?= $_SESSION['user']['name'];?>"required>
     <br>
@@ -30,11 +30,11 @@
     <input type="password" name="confirmPassword" required>
     <br>
     <a href="profile.php">
-        <button type="submit" >Update</button>
+        <button class="default-button" type="submit" >Update</button>
     </a>
 </form>
-<h5>Delete Account</h5>
 <form action="app/users/delete-user.php" method="post">
+<h5>Delete Account</h5>
     <label for="username">Username</label>
     <input class="" type="text" name="username" required>
     <br>
@@ -44,7 +44,7 @@
     <label for="password">Confirm Password</label>
     <input class="" type="password" name="confirmPassword" required>
     <br>
-    <button type="submit" class="delete-account-button">Delete Account</button>
+    <button class="default-button" type="submit" class="delete-account-button">Delete Account</button>
 </form>
 <?php else:?>
 <div class="error-div">
