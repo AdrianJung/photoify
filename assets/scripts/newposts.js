@@ -220,7 +220,6 @@ getData(url)
         const commentbuttons = [...document.querySelectorAll('.commentBtn')]
 
         const showEditButtons = [...document.querySelectorAll('.show-edit-button')]
-        console.log(showEditButtons)
 
         initEventListeners(buttons, handleClickLikes)
         initEventListeners(commentbuttons, handleClickComment)

@@ -22,16 +22,3 @@
 </div>
     <script src="/assets/scripts/preview.js"></script>
 <?php require __DIR__.'/views/footer.php'; ?>
-
-<!-- <form action="app/posts/store.php" method="post" enctype="multipart/form-data">
-    <input class="file-input" type="file"  onchange="previewFile()" name="image" id="image" type="file" multiple="">
-    <br>
-    <img class="previewimage" src="" height="200">
-    <br>
-    <div class="select-image-div">
-    <input type="button" class="button image-button" value="Select image" onclick="document.getElementById('image').click();"/>
-    <br>
-        <input type="text" name="description" placeholder="add description">
-        <br>
-        <button type="submit" class="button" name="button">Submit</button>
-    </form> -->

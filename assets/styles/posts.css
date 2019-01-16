@@ -89,6 +89,10 @@
   font-size: 16px;
   font-weight: 500;
 }
+.edit-post-container {
+  margin-bottom: 10px;
+
+}
 
 .commentBtn {
   position: relative;

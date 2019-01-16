@@ -166,14 +166,17 @@ input:focus {
   animation-name: register;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-
 }
 .error-text {
   font-family: "Roboto", sans-serif;
   color: var(--black);
   font-size: 18px;
   font-weight: 400;
-  
+}
+.update-user-page-container {
+  margin-bottom: 13vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes register {
