@@ -18,18 +18,11 @@ create a [Instagram](https://enmwikipediaorg/wiki/Instagram) clone which we call
 - [x] update db based on id
 - [x] upload a profile avatar image
 - [x] create new posts with image and description
-- [ ] edit posts
+- [x] edit posts
 - [x] delete posts
 - [x] like and dislike posts
-- [ ] follow and unfollow other users
-- [ ] view a list of posts by users I follow
 - [x] able to comment on a post
-- [ ] able to edit comments
-- [ ] able to delete comments
-- [ ] able to reply to comments
-- [ ] able to delete account along with all posts and comments
-- [ ] able to resetting password with email
-- [ ] able to view posts with a specific [hashtag](https://enmwikipediaorg/wiki/Hashtag) in the description
+- [x] able to delete account along with all posts and comments
 
 # Front-end
 
@@ -44,3 +37,25 @@ create a [Instagram](https://enmwikipediaorg/wiki/Instagram) clone which we call
 - [ ] Create concept for '#-filter view'
 - [ ] Add toggle for Explore // Filtered
 - [ ] Add toggle for Explore // Filtered
+
+# Testers
+* [Erik Arvidsson](https://github.com/erikarvidsson)
+* [Mattias Rådemar](https://github.com/Raademar)
+
+## Author 
+* [Adrian Jungelius](https://github.com/AdrianJung)
+
+# How to use:  
+
+You need a server in order to run the software for example [MAMP](https://www.mamp.info/en/)  
+Either clone or download the repository and open index.php at your local server  
+
+### Built with
+* PHP
+* CSS 
+* JS 
+* HTML 
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
