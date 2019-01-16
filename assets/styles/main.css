@@ -153,8 +153,6 @@ input:focus {
 }
 
 .error-div {
-  height: 70px;
-  width: 250px;
   border: 2px solid var(--black);
   border-radius: 2%;
   box-shadow : 0 1px 2px var(--white), 0 1px 3px var(--white) ;
@@ -163,7 +161,7 @@ input:focus {
   position: relative;
   top: 50px;
   align-self: center; 
-  padding-top: 15px;
+  padding: 20px;
   text-align: center;
   animation-name: register;
   animation-duration: 1s;
@@ -173,7 +171,7 @@ input:focus {
 .error-text {
   font-family: "Roboto", sans-serif;
   color: var(--black);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
   
 }

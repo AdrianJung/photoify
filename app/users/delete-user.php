@@ -22,14 +22,25 @@ if(isset($_POST['username'], $_POST['password'], $_POST['confirmPassword'])){
             $_SESSION['error'] = "User does not exist";
             redirect('/../update-user.php');
         }
-        
-        $userId = $users['id'];
+       
+        $userId = (int)$users['id'];
         $dbPassword = $users['password'];
     
         // checks if given password is equal to password in db
         if (password_verify($password, $dbPassword))
         {
+            // die(var_dump(rmdir('../uploads/'.$userId)));
+
             $statement = $pdo->prepare('DELETE FROM users WHERE id = :user_id');
+            $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $statement->execute();
+            $statement = $pdo->prepare('DELETE FROM posts WHERE user_id = :user_id');
+            $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $statement->execute();
+            $statement = $pdo->prepare('DELETE FROM comments WHERE user_id = :user_id');
+            $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $statement->execute();
+            $statement = $pdo->prepare('DELETE FROM likes WHERE user_id = :user_id');
             $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $statement->execute();
 
@@ -37,8 +48,9 @@ if(isset($_POST['username'], $_POST['password'], $_POST['confirmPassword'])){
         redirect('/app/users/logout.php');
     
     }
-    $_SESSION['error'] = "Wrong Credentials!";
 
-   redirect('/../update-user.php');
+    $_SESSION['error'] = "Wrong Credentials";
+
+    redirect('/../update-user.php');
     
 }

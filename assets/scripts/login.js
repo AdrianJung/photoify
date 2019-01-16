@@ -40,7 +40,6 @@ if (document.querySelector('.sign')){
 
 
 const errordiv = document.querySelector('.error-div');
-
 if (errordiv) 
 {
   setTimeout(() => {

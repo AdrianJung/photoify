@@ -7,6 +7,7 @@ require __DIR__.'/../autoload.php';
 // checks if the user data is posted
 if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['username'], $_POST['password'], $_POST['confirmPassword']))
 {
+    
     // checks if passwords match
     if ($_POST['password'] === $_POST['confirmPassword'])
     {
@@ -17,6 +18,24 @@ if (isset($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['user
         $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $created_at = date("Y-m-d");
+
+
+        $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username OR email = :email');
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->execute();
+    
+        if(!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($user) {
+        $_SESSION['error'] = 'Username or email already exists';
+        redirect('/login.php');
+        }
         // insert statement
         $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, email, username, password, created_at)
         VALUES (:firstName, :lastName, :email, :userName, :password, :created_at)');
