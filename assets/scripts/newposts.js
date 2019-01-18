@@ -212,6 +212,7 @@ getData(url)
             const deleteButtons = [...document.querySelectorAll('.delete-post')]
             const editButtons = [...document.querySelectorAll('.edit-post')]
             const commentbuttons = [...document.querySelectorAll('.commentBtn')]
+            const showEditButtons = [...document.querySelectorAll('.show-edit-button')]
             initEventListeners(buttons, handleClickLikes)
             initEventListeners(commentbuttons, handleClickComment)
             initEventListeners(deleteButtons, handleClickDelete)
@@ -237,6 +238,7 @@ getData(url)
         initEventListeners(showEditButtons, showEdit)
         hideButtons(data, buttons)
         displayButtonsHandler(deleteButtons)
+        displayButtonsHandler(editButtons)
         displayButtonsHandler(showEditButtons)
     }
     deleteCookie("imagecookie")
