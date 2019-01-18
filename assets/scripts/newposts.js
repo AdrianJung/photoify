@@ -203,7 +203,6 @@ getData(url)
         if (imagecookie) {
             const profileInfo = document.querySelector('.profile-image-name')
             profileInfo.classList.add('hidden')
-            
             const cookieid = getCookieVal("imagecookie")
             const postsfilter = data => data.filter(post => post.post_id === cookieid)
             data = postsfilter(data)
