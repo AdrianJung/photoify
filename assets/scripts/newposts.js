@@ -11,50 +11,52 @@ const createPost = (json) => {
         const comments = post.comments.map(comment => {
             return `
             <p><b class="comment-username">${comment.author} : </b> ${comment.content}</p>
-            `    
+            `
         }).join('')
         return `
         <div class="post-box">
-        <div class="post-header">
-        <img src="${post.avatar}" style ="background-image: url()"class="post-user-image" alt="">
-        <h4 class="comment-username username-big">${post.username}</h4>
-        <form class="deletePost-form" target="hiddenFrame" action="../app/posts/update.php" method="post">
-        <button name="deletePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button delete-post" type="submit">Delete</button>
-        </form>
-        <button data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button show-edit-button">Edit</button>
+        <div class="header-buttons-container">
+            <div class="post-header">
+                <img src="${post.avatar}" style ="background-image: url()"class="post-user-image" alt="">
+                <h4 class="comment-username username-big">${post.username}</h4>
+            </div>
+            <div class="edit-delete-buttons">
+                <form class="deletePost-form" target="hiddenFrame" action="../app/posts/update.php" method="post">
+                    <button name="deletePost" data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button delete-post" type="submit">Delete</button>
+                </form>
+                <button data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button show-edit-button">Edit</button>
+            </div>
         </div>
         <div class="edit-post-container hidden" data-id="${post.post_id}">
-
-        <form target="hiddenFrame" action="../app/posts/update.php" method="post">
-        <input class="comment-input" type="text" name="description" placeholder="Add new description" required>
-        <button data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button edit-post" type="submit">Submit</button>
-        </form>
-
+            <form target="hiddenFrame" action="../app/posts/update.php" method="post">
+                <input class="comment-input" type="text" name="description" placeholder="Add new description" required>
+                <button data-id="${post.user_id}" data-postid="${post.post_id}" class="post-button edit-post" type="submit">Submit</button>
+            </form>
         </div>
         <div class="post-image-container">
-        <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
+            <img class="post-image" data-id="${post.post_id}" src="${post.image}" alt="">
         </div>
         <div class="post-description">
-        <p class="post-description-text"> <b>${post.description}</b>
-        <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
-        <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
-        </button>
-        <button class="likeBtn dislike fas fa-thumbs-up hidden" id="#likeBtn" data-id="${post.post_id}" name="dislike" type="submit" value="">
-        </button>
-        <p class="likes" data-id="${post.post_id}"> ${post.no_likes}</p>
-        </form>
+            <p class="post-description-text"> <b>${post.description}</b>
+                <form action="../app/posts/likes.php" class="likeform" target="hiddenFrame" method="post">
+                    <button class="likeBtn like far fa-thumbs-up" id="#likeBtn" data-id="${post.post_id}" name="like" type="submit" value="">
+                    </button>
+                    <button class="likeBtn dislike fas fa-thumbs-up hidden" id="#likeBtn" data-id="${post.post_id}" name="dislike" type="submit" value="">
+                    </button>
+                    <p class="likes" data-id="${post.post_id}"> ${post.no_likes}</p>
+                </form>
+            </p>
         </div>
-        </p>
         <div data-id="${post.post_id}" class="commentscontainer">
-        <div class="comments-section" data-id="${post.post_id}">
-        ${comments}
-        </div>
+            <div class="comments-section" data-id="${post.post_id}">
+                ${comments}
+            </div>
         </div>
         <form class="comments-form" target="hiddenFrame" action="../app/posts/comments.php" method="post">
-        <input class="comment-input" type="text" name="comment" placeholder="" required>
-        <button type="submit" data-id="${post.post_id}" class="commentBtn">Comment</button>
+            <input class="comment-input" type="text" name="comment" placeholder="" required>
+            <button type="submit" data-id="${post.post_id}" class="commentBtn">Comment</button>
         </form>
-        </div>      
+    </div>      
         `
     }).join('')
     container.innerHTML = postsMarkup;
@@ -171,13 +173,13 @@ const handleClickLikes = (event) => {
 }
 // toggles hidden class on update description
 const showEdit = (event) => {
-    event.target.parentNode.nextElementSibling.classList.toggle('hidden')
+   event.target.parentElement.parentElement.nextSibling.nextSibling.classList.toggle('hidden')
 }
 // removes cookie
 const deleteCookie = (name) => {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
-       
+
 let imagecookie = document.cookie.match(/^(.*;)?\s*imagecookie\s*=\s*[^;]+(.*)?$/)
 
 getData(url)
@@ -214,12 +216,12 @@ getData(url)
             initEventListeners(commentbuttons, handleClickComment)
             initEventListeners(deleteButtons, handleClickDelete)
             initEventListeners(editButtons, handleClickEdit)
-            initEventListeners(showEditButtons, showEdit) 
+            initEventListeners(showEditButtons, showEdit)
             hideButtons(data, buttons)
             displayButtonsHandler(deleteButtons)
             displayButtonsHandler(editButtons)
             displayButtonsHandler(showEditButtons)
-        } 
+        }
         
     } else {
         createPost(data)
@@ -231,8 +233,8 @@ getData(url)
         initEventListeners(buttons, handleClickLikes)
         initEventListeners(commentbuttons, handleClickComment)
         initEventListeners(deleteButtons, handleClickDelete)
-        initEventListeners(editButtons, handleClickEdit) 
-        initEventListeners(showEditButtons, showEdit) 
+        initEventListeners(editButtons, handleClickEdit)
+        initEventListeners(showEditButtons, showEdit)
         hideButtons(data, buttons)
         displayButtonsHandler(deleteButtons)
         displayButtonsHandler(showEditButtons)

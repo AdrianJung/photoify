@@ -24,6 +24,20 @@
   margin: 3px 0 5px 0;
   width: 100%;
   display: flex;
+  flex: 1;
+}
+
+.header-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-delete-buttons {
+  display:flex;
+}
+
+.show-edit-button {
+  margin: 0 10px 0 5px;
 }
 
 .post-image-container {
@@ -86,16 +100,12 @@
   cursor: pointer;
 }
 
-.delete-post {
-  position: relative;
-  left: 5vw;
-  margin-right: 5px;
+.
+.edit-delete-buttons {
+  display: flex;
+    flex: 2;
 }
 
-.show-edit-button {
-  position: relative;
-  left: 5vw;
-}
 
 .edit-post {
   margin-bottom: 10px;
